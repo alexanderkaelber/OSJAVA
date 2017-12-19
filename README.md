@@ -1,4 +1,6 @@
 # OSJAVA
 OSJAVA Studienleistung 2017/2018
 
-www.draw.io
+# INFOS
+Nachdem wir nun also die Methodenheader bereits implementieren mussten,
+habe ich diese eingebunden. Damit können wir auf dieser Basis programmieren.
