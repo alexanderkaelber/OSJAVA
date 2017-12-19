@@ -3,6 +3,21 @@ package Gruppe7;
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+	// Main Method
+    }
+
+    void startPlaner()
+    {
+        //Code
+    }
+
+    void startImporter()
+    {
+        //Code
+    }
+
+    void startExporter()
+    {
+        //Code
     }
 }
