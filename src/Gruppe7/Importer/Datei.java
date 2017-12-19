@@ -1,3 +1,5 @@
+package Gruppe7.Importer;
+
 import java.io.*;
 
 /**
@@ -20,7 +22,7 @@ public class Datei
 {
     // Attribute der Klasse Datei
     // Name der Datei
-    // - Der Name der Datei darf Pfadinformationen enthalten, die aber 
+    // - Der Name der Datei darf Pfadinformationen enthalten, die aber
     // nicht mit den Windows ueblichen Backslash angegeben werden duerfen,
     // sondern mit dem normalen Slash. (bsp. C:/temp/datei.txt)
     private String dName;
@@ -100,7 +102,7 @@ public class Datei
     /**
      * Schreibt einen String als Zeile in eine Datei.
      * 
-     * @param  in_str - (String)Zeichenkette die in die Datei geschrieben 
+     * @param  in_str - (String)Zeichenkette die in die Datei geschrieben
      *                  werden soll.
      */
     public void writeLine(String in_str)
@@ -114,7 +116,7 @@ public class Datei
     /**
      * Schreibt einen String als Zeile in eine Datei. (Variante mit Fehlercodes!)
      * 
-     * @param  in_str - (String)Zeichenkette die in die Datei geschrieben 
+     * @param  in_str - (String)Zeichenkette die in die Datei geschrieben
      *                  werden soll.
      * @return (int) - Fehlernummer oder 0 fuer OK!
      */

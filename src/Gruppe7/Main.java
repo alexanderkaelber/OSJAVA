@@ -1,4 +1,4 @@
-package com.company;
+package Gruppe7;
 
 public class Main {
 
