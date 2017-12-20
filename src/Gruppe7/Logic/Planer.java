@@ -6,6 +6,7 @@ import Gruppe7.Data.Vorstellung;
 
 public class Planer
 {
+    //Attribute needs some work obviously
     private randomSpielplan[] Vorstellung[21][Saal.Length][4];
     private improvedSpielplan[] Vorstellung[21][Saal.Length][4];
 
@@ -17,6 +18,7 @@ public class Planer
     private Vorstellung createVorstellung()
     {
         //Code
+        return null;
     }
 
     public Spielplan CreateRandomSpielplan()
@@ -29,6 +31,7 @@ public class Planer
     public int RandomNumberGenerator()
     {
         //Code
+        return 0;
     }
 
     private boolean checkGenre()

@@ -22,14 +22,17 @@ public class Vorstellung
     private boolean check3D()
     {
         //Code
+        return false;
     }
     private boolean checkFSK()
     {
         //Code
+        return false;
     }
 
     private boolean checkLaufzeiten()
     {
         //Code
+        return false;
     }
 }
