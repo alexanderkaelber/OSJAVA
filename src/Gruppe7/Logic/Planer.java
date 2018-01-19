@@ -25,7 +25,7 @@ public class Planer
         for (int i = 0; i < 21; i++) {
             Vorstellung newVorstellung = new Vorstellung();
 
-            if () //TODO: hier weiter
+            //if () //TODO: hier weiter
         }
     }
 
