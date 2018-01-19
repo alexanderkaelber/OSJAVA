@@ -1,12 +1,20 @@
 package Gruppe7.Data;
 
-public class Spielzeiten
-{
-    //Define enum
-    enum spielzeiten{}
+public enum Spielzeiten {
 
-    public Spielzeiten()
-    {
-        //Constructor
+    SLOT_1500(150),
+    SLOT_1730(150),
+    SLOT_2000(180),
+    SLOT_2300(150);
+
+    private int slotDuration;
+    Spielzeiten(int slotDuration){
+        this.slotDuration = slotDuration;
     }
+
+    public int getSlotDuration(){
+        return this.slotDuration;
+    }
+
+
 }
