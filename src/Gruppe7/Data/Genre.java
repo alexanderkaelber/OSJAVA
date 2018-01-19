@@ -22,8 +22,7 @@ package Gruppe7.Data;
         public String getGenereName(){
             return this.genereName;
         }
-
-            }
+    }
 
 
 

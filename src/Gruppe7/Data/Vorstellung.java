@@ -60,7 +60,7 @@ public class Vorstellung
         IF Spalte 3D aus saele.csv = false, dann dürfen in den jeweiligen Sälen nur Kinofilme aus filme.csv mit
         Spalte 3D = false gezeigt werden, sonst ist es egal
          */
-    }
+
     private boolean checkFSK()
     {
         /*Code
