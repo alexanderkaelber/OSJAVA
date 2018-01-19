@@ -1,4 +1,5 @@
 package Gruppe7;
+import java.util.Random;
 
 public class Main {
 
