@@ -1,7 +1,7 @@
 package Gruppe7.Data;
 
 public class Vorstellung
-{
+{   //Attribute
     private Kinofilm film;
     private Werbefilm[] werbungen;
     private int einnahmenAusWerbung;
@@ -10,22 +10,22 @@ public class Vorstellung
     private Spielzeiten timeslot;
     int eintrittspreis = 7;
 
+    //Constructor
     /*public Vorstellung() {
         this(Kinofilm, , , , );
     }*/
 
     public Vorstellung(Kinofilm in_kinofilm,
                        Werbefilm[] in_werbefilm,
-                       Saal in_saal,
+                       int in_saal,
                        Spielzeiten in_timeslot,
                        int eintrittspreis)
     {
-        /*Constructor
-        Wie fange ich hier an? Muss ich erst noch die notwendigen Daten aus den anderen Klassen über get-Methoden
+        /* Wie fange ich hier an? Muss ich erst noch die notwendigen Daten aus den anderen Klassen über get-Methoden
         herholen oder läuft das durch die Komposition automatisch?
         Muss ich den Eintrittspreis hier mit in den Konstruktor tun oder kann ich ihn mit einem Konstruktor
         ohne Parameter reinschreiben?
-        Default parameter googlen*/.
+        Default parameter googlen*/
 
         film=in_kinofilm;
         werbungen=in_werbefilm;
@@ -33,6 +33,7 @@ public class Vorstellung
         timeslot=in_timeslot;
 
     }
+    //get-Methoden
     public Kinofilm getKinofilm(){
         return film;
     }
@@ -47,8 +48,11 @@ public class Vorstellung
         //eventuell Liste/Collection, weil wir nicht wissen, wie viele Werbefilme
     }
 
-    private boolean check3D() {
-        if (film.3D==saal.3D){
+    //check-Methoden for Constructor
+    private boolean check3D(Kinofilm film, int saal, boolean Kinofilm.get3D()) {
+
+        if (film.threeD==saal.threeD){
+            //was passiert dann? einfach return false?
             return false;
         }else {
 
