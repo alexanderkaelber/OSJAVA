@@ -12,66 +12,67 @@ public class Kinofilm extends Film
     private Genre genre;
 
     public Kinofilm(
-            String in_Titel,
-            int in_Laufzeit,
-            boolean in_3d,
-            String in_Sprache,
+            String in_titel,
+            int in_laufzeit,
+            boolean in_threeD,
+            String in_sprache,
             String in_Regisseur,
-            int in_Erscheinungsjahr,
-            int in_Beliebtheit,
-            int in_Verleipreis,
-            Genre.genre in_Genre,
-            Fsk.FSK in_Fsk)
+            int in_erscheinungsjahr,
+            int in_beliebtheit,
+            int in_verleipreis,
+            Fsk.FSK in_fsk,
+            Genre.genre in_genre)
     {
-        //Constructor
+        super(in_titel, in_laufzeit);
+        threeD = in_threeD;
+        sprache = in_sprache;
+        regisseur = in_Regisseur;
+        erscheinungsjahr = in_erscheinungsjahr;
+        beliebtheit = in_beliebtheit;
+        verleihpreisProWoche = in_verleipreis;
+        fsk = in_fsk;
+        genre = in_genre;
+        //TODO: Enums müssen noch richtig eignebunden werden.
     }
 
+    // Getter
     public boolean get3D()
     {
-        //Code
-        return false;
+        return threeD;
     }
 
     public String getSprache()
     {
-        //Code
-        return null;
+        return sprache;
     }
 
     public String getRegisseur()
     {
-        //Code
-        return null;
+        return regisseur;
     }
 
     public int getErscheinungsjahr()
     {
-        //Code
-        return 0;
+        return erscheinungsjahr;
     }
 
     public int getBeliebtheit()
     {
-        //Code
-        return 0;
+        return beliebtheit;
     }
 
     public int getVerleihpreisProWoche()
     {
-        //Code
-        return 0;
+        return verleihpreisProWoche;
     }
 
     public Fsk getFsk()
     {
-        //Code
-        return null;
+      return fsk;
     }
 
     public Genre getGenre()
     {
-        //Code
-        return null;
+       return genre;
     }
-
 }
