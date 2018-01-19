@@ -1,5 +1,6 @@
 package Gruppe7.Logic;
 
+import java.util.ArrayList;
 import Gruppe7.Data.Saal;
 import Gruppe7.Data.Spielplan;
 import Gruppe7.Data.Vorstellung;
