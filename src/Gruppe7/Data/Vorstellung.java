@@ -5,7 +5,7 @@ public class Vorstellung
     private Kinofilm film;
     private Werbefilm[] werbungen;
     private int einnahmenAusWerbung;
-    private int einnahmenAusKartenverkaeufen;
+    private int einnahmenAusKArtenverkaeufen;
     private int saal;
     private Spielzeiten timeslot;
     int eintrittspreis = 7;
@@ -32,6 +32,19 @@ public class Vorstellung
         //saal=in_saal;
         timeslot=in_timeslot;
 
+//    private boolean check3D() {
+//        if (film.3D==saal.3D){
+//            return false;
+//        }else {
+//
+//        }
+
+        /* () Film- und ein Saalobjekt
+         * film.3D = 3D-Eigenschaft des Films, film.3D==saal.3D mit if-Funktion */
+    /*Code
+        IF Spalte 3D aus saele.csv = false, dann dürfen in den jeweiligen Sälen nur Kinofilme aus filme.csv mit
+        Spalte 3D = false gezeigt werden, sonst ist es egal
+         */
     }
     public Kinofilm getKinofilm(){
         return film;

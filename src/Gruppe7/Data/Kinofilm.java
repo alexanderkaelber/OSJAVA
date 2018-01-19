@@ -1,5 +1,4 @@
 package Gruppe7.Data;
-import  Gruppe7.Data.*;
 
 public class Kinofilm extends Film
 {
