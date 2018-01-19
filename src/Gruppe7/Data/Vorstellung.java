@@ -29,7 +29,7 @@ public class Vorstellung
 
         film=in_kinofilm;
         werbungen=in_werbefilm;
-        saal=in_saal;
+        //saal=in_saal;
         timeslot=in_timeslot;
 
     }
@@ -47,12 +47,12 @@ public class Vorstellung
         //eventuell Liste/Collection, weil wir nicht wissen, wie viele Werbefilme
     }
 
-    private boolean check3D() {
-        if (film.3D==saal.3D){
-            return false;
-        }else {
-
-        }
+//    private boolean check3D() {
+//        if (film.3D==saal.3D){
+//            return false;
+//        }else {
+//
+//        }
 
         /* () Film- und ein Saalobjekt
          * film.3D = 3D-Eigenschaft des Films, film.3D==saal.3D mit if-Funktion */

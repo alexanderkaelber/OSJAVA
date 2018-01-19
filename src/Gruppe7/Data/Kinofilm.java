@@ -20,8 +20,8 @@ public class Kinofilm extends Film
             int in_erscheinungsjahr,
             int in_beliebtheit,
             int in_verleipreis,
-            Fsk.FSK in_fsk,
-            Genre.genre in_genre)
+            Fsk in_fsk,
+            Genre in_genre)
     {
         super(in_titel, in_laufzeit);
         threeD = in_threeD;
@@ -32,7 +32,6 @@ public class Kinofilm extends Film
         verleihpreisProWoche = in_verleipreis;
         fsk = in_fsk;
         genre = in_genre;
-        //TODO: Enums müssen noch richtig eignebunden werden.
     }
 
     // Getter
