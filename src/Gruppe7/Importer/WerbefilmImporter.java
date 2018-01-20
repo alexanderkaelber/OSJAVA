@@ -30,13 +30,14 @@ public class WerbefilmImporter extends Datei {
             if (importString != null){
                 System.out.println("Import String:"  +importString+ "\naus Importdatei " +in_name );
 
-                String array[] = importString.split(";");
+                String arrayWerbung[] = importString.split(";");
 
-                importWerbespotBezeichnung = String.valueOf(array[0]);
-                importWerbespotEinnahmenen = Integer.valueOf(array[1]);
-                importWerbespotLaufzeit = Integer.valueOf(array[2]);
+                importWerbespotBezeichnung = String.valueOf(arrayWerbung[0]);
+                importWerbespotEinnahmenen = Integer.valueOf(arrayWerbung[1]);
+                importWerbespotLaufzeit = Integer.valueOf(arrayWerbung[2]);
 
-                //SaalVerwaltung.setSaele(new Saal(importPlaetzeLoge, importPlaetzeParkett, importThreeD, importSaalNr));
+
+                WerbefilmVerwaltung.setWerbefilme(new Werbefilm(importWerbespotBezeichnung, importWerbespotLaufzeit, importWerbespotEinnahmenen));
 
             }
 

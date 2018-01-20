@@ -27,7 +27,7 @@ public class Main {
         new SaalImporter("C:/import/saele.csv");
 
 
-        new WerbefilmImporter("C:/importer/werbespots.csv");
+        new WerbefilmImporter("C:/import/werbespots.csv");
 
 
             }
