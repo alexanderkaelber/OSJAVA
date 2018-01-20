@@ -2,6 +2,9 @@ package Gruppe7.Logic;
 
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.List;
+import java.util.Collections;
+import java.util.Enumeration;
 
 import Gruppe7.Data.*;
 
@@ -60,17 +63,20 @@ public class Planer
 
     private boolean checkGenre()
     {
-        //Temporäre GenreVariable zur Prüfung
-//        for (Genre g: Genre)
-//        {
-//            // TODO: Enumerable Collection gebruacht
-//        }
+        // TODO: Basti
+        //Temporäre Genre-Liste
+        List<Genre> enumerationList = Collections.list(Genre);
+
+        for (Genre g: enumerationList)
+        {
+            // TODO: Enumerable Collection gebruacht
+        }
 
 
         // TODO: Ist jedes Genre im randomSpielplan einmal vertreten?
         for( Vorstellung l: randomSpielplan)
         {
-
+            if (l.)
         }
 
         return false;

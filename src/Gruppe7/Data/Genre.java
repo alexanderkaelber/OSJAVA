@@ -15,6 +15,7 @@ package Gruppe7.Data;
 
 
         private String genereName;
+
         Genre(String genreName){
             this.genereName = genreName;
         }

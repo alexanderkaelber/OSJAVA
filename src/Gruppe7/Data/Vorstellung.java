@@ -30,9 +30,6 @@ public class Vorstellung
 
     }
 
-
-
-
     //Check Methoden hier
 
     //Check 3D
@@ -54,7 +51,6 @@ public class Vorstellung
     }
 
 
-
     private boolean checkFSK(Spielzeiten timeslot, Kinofilm vorstellungsFilm) {
 
         if(timeslot == Spielzeiten.SLOT_1500 && vorstellungsFilm.getFsk() == Fsk.FSK_16) {
@@ -73,34 +69,21 @@ public class Vorstellung
 
         //(vorstellungsFilm.3D = true + vorstellungsSaal.3D = false) = false
 
+        //Ende Check Methode
+    }
 
-
-
-        //Ende Check Methoden
-
-
-
+    // Getter
+    public Kinofilm getKinofilm(){ return film; }
+    public int getSaal(){ return saal; }
+    public Spielzeiten getSpielzeiten(){
+        return timeslot;
+    }
+    public Werbefilm[] getWerbefilme(){
+        return werbungen;
+        //eventuell Liste/Collection, weil wir nicht wissen, wie viele Werbefilme
 
 
     }
-
-
-
-
-    //get-Methoden
-//    public Kinofilm getKinofilm(){
-//        return vorstellungsFilm;
-//    }
-//    public int getSaal(){
-//        return vorstellungsSaal;
-//    }
-//    public Spielzeiten getSpielzeiten(){
-//        return timeslot;
-//    }
-//    public Werbefilm[] getWerbefilme(){
-//        return werbungen;
-//        //eventuell Liste/Collection, weil wir nicht wissen, wie viele Werbefilme
-//    }
 
     //check-Methoden for Constructor
 
