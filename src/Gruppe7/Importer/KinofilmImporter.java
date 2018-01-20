@@ -2,8 +2,6 @@ package Gruppe7.Importer;
 
 import Gruppe7.Data.*;
 import java.util.ArrayList;
-import java.util.Collections;
-
 
 public class KinofilmImporter extends Datei {
 
@@ -43,10 +41,13 @@ public class KinofilmImporter extends Datei {
         System.out.println("Import String:"  +importString+ "\naus Importdatei " +in_name );
 
         //Schleife läuft bis zum Ende der Datei.
-        while (!importFileKinofilme.eof()) {
+        while (true) {
 
             //Jede Zeile wird in importString eingelesen, es sei denn, in der letzten Zeile steht nichts drin.
             importString = importFileKinofilme.readLine_FS();
+
+            if (importString == null) {break;}
+
             String[] arrayKinofilm = new String[0];
             if (importString != null) {
                 System.out.println("Import String: " + importString + "\naus Importdatei " + in_name);
