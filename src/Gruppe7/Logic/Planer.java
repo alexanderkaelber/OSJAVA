@@ -10,10 +10,16 @@ public class Planer
     // Arraylisten die je einen Spielplan enthalten
     private ArrayList<Vorstellung> randomSpielplan = new ArrayList<Vorstellung>(
 
+<<<<<<< HEAD
             //Initialerstellung des Plans bei Konstruktorcall
             // Vorstellung[21][Saal.Length][4];
     );
     private ArrayList<Vorstellung> improvedSpielplan = new ArrayList<Vorstellung>();
+=======
+    // Arraylisten die je einen Spielplan enthalten. Dreidimensionale Arrays.
+    private Vorstellung[][][] randomSpielplan = new Vorstellung[21][4][SaalVerwaltung.getSize()];
+    private Vorstellung[][][] improvedSpielplan = new Vorstellung[21][4][SaalVerwaltung.getSize()];
+>>>>>>> 828efd1... Kinofil -> Genre Arraylist hinzugefügt
 
     public Planer()
     {
