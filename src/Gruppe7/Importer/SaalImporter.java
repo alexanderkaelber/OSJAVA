@@ -30,7 +30,7 @@ public class SaalImporter extends Datei {
         while (importFileSaele.eof()==false){
             importString = importFileSaele.readLine_FS();
             if (importString != null){
-                System.out.println(importString);
+                System.out.println("Import String:"  +importString+ "\naus Importdatei" +in_name );
 
                 String array[] = importString.split(";");
 

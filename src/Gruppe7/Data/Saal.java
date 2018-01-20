@@ -15,7 +15,14 @@ public class Saal {
         plaetzeParkett = in_PlaetzeParkett;
         threeD = in_3D;
         saalNummer = in_getSaalNummer;
-        System.out.println("Klasse Saal: Saal Instanz erzeugt!");
+
+        System.out.println("  Klasse Saal: Saal Instanz erzeugt!");
+        System.out.println("  Klasse Saal Nr: "+saalNummer);
+        System.out.println("  Klasse Saal Platze Parkett: "+plaetzeParkett);
+        System.out.println("  Klasse Saal Plätze Loge: "+plaetzeLoge);
+        System.out.println("  Klasse Saal 3D Fähig: "+ threeD);
+
+        System.out.println("--------------------------------------");
     }
 
             //Getter & Setter
