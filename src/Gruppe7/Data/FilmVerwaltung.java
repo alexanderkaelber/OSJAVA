@@ -1,9 +1,12 @@
 package Gruppe7.Data;
 
+import java.util.ArrayList;
+
 public class FilmVerwaltung
 {
-    public FilmVerwaltung()
-    {
-        //Constructor
+    static ArrayList<Kinofilm> filme = new ArrayList<>();
+
+    static  ArrayList<Kinofilm> getFilme() {
+        return filme;
     }
 }

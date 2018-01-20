@@ -1,6 +1,7 @@
 package Gruppe7.Data;
 
-public class Spielplan
+public class Spielplan{}
+/*
 {
     //Attribute needs some work obviously
 //    private Vorstellung[] vorstellung[21][saal.Length][4];
@@ -9,4 +10,4 @@ public class Spielplan
     {
         //Constructor
     }
-}
+}*/
