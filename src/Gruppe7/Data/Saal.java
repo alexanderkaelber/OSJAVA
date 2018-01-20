@@ -7,7 +7,6 @@ public class Saal {
     private boolean threeD;
     private int saalNummer;
 
-
     //Constructor
     public Saal(int in_PlaetzeLoge, int in_PlaetzeParkett, boolean in_3D, int in_getSaalNummer) {
 
@@ -34,13 +33,12 @@ public class Saal {
     public int getPlaetzeParkett() {
         return plaetzeParkett;
     }
-    public boolean getThreeD() {
+
+    boolean getThreeD() { // TODO: wurde packacge exclusive gemacht, exception?
         return threeD;
     }
 
     public int getSaalNummer() {
         return saalNummer;
     }
-
-
 }

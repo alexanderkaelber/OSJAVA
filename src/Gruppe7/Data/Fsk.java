@@ -16,6 +16,4 @@ public enum Fsk {
     public String getFskName(){
         return this.fskName;
     }
-
-
 }

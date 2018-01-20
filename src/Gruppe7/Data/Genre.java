@@ -1,29 +1,26 @@
 package Gruppe7.Data;
 
-    //Define enum
-    public enum Genre {
+//Define enum
+public enum Genre {
 
-        ACTION("Action"),
-        DOKUMENTATION("Dokumentation"),
-        DRAMA("Drama"),
-        HORROR("Horror"),
-        KOMOEDIE("Komödie"),
-        KRIMI("Krimi"),
-        SCIENCE_FICTION("Science Fiction"),
-        ZEICHENTRICK("Zeichentrick"),
-        THRILLER("Thriller");
+    ACTION("Action"),
+    DOKUMENTATION("Dokumentation"),
+    DRAMA("Drama"),
+    HORROR("Horror"),
+    KOMOEDIE("Komödie"),
+    KRIMI("Krimi"),
+    SCIENCE_FICTION("Science Fiction"),
+    ZEICHENTRICK("Zeichentrick"),
+    THRILLER("Thriller");
 
+    private String genereName;
 
-        private String genereName;
-
-        Genre(String genreName){
-            this.genereName = genreName;
-        }
-
-        public String getGenereName(){
-            return this.genereName;
-        }
-
+    Genre(String genreName){
+        this.genereName = genreName;
     }
+    public String getGenereName(){
+        return this.genereName;
+    }
+}
 
 
