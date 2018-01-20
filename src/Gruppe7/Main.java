@@ -1,12 +1,7 @@
 package Gruppe7;
 import java.io.IOException;
-import java.util.Random;
 
-import Gruppe7.Data.*;
-import Gruppe7.Importer.Datei;
-import Gruppe7.Importer.SaalImporter;
-import Gruppe7.Importer.WerbefilmImporter;
-import Gruppe7.Importer.readCSV;
+import Gruppe7.Importer.*;
 
 public class Main {
 
@@ -22,12 +17,12 @@ public class Main {
 
 //Import Test
 
+        new KinofilmImporter("C:/import/filme.csv");
+
+        //new SaalImporter("C:/import/saele.csv");
 
 
-        new SaalImporter("C:/import/saele.csv");
-
-
-        new WerbefilmImporter("C:/import/werbespots.csv");
+        //new WerbefilmImporter("C:/import/werbespots.csv");
 
 
             }
