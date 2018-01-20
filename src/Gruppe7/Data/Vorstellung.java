@@ -1,116 +1,72 @@
 package Gruppe7.Data;
-import Gruppe7.Data.*;
-import java.util.*;
-
 
 public class Vorstellung {
 
     //Attribute
     private Kinofilm vorstellungsFilm;
-    private Werbefilm[] werbungen;
+    private Werbefilm[] werbungen; // TODO: Anzhal der Werbefilme über ihre Länge geregelt
     private Saal vorstellungsSaal;
-    private Spielzeiten timeslot;
-    private int einnahmenAusWerbung;
-    private int einnahmenAusKartenverkaeufen;
-    private int eintrittspreis = 7;
+    private Spielzeiten vorstellungsTimeslot;
+    private int eintrittspreis = 7; // TODO: Hardcoded
     private int werbezeitMax = 20;
 
-
     //Constructor
+    public Vorstellung()
+    {
+        vorstellungsFilm = FilmVerwaltung.getFilme().get(0);
+        werbungen[0] = WerbefilmVerwaltung.getWerbefilme().get(0);
+        werbungen[1] =  WerbefilmVerwaltung.getWerbefilme().get(1); // TODO: Anzhal der Werbefilme über ihre Länge geregelt
+        vorstellungsSaal = SaalVerwaltung.getSaele().get(0);
+        vorstellungsTimeslot = Spielzeiten.SLOT_1500;
 
-    public Vorstellung(Kinofilm in_kinofilm,
-                       Werbefilm[] in_werbefilm,
-                       Saal in_saal,
-                       Spielzeiten in_timeslot,
-                       int eintrittspreis,
-                       int werbezeitMax) {
-
-        // --> Default parameter googlen
-
-        vorstellungsFilm = in_kinofilm;
-        werbungen = in_werbefilm;
-        vorstellungsSaal = in_saal;
-        timeslot = in_timeslot;
-        this.eintrittspreis = eintrittspreis;         // ????
-        this.werbezeitMax = werbezeitMax;             // ????
-
-
-        //Check 3D
-        check3D(Kinofilm vorstellungsFilm, Saal vorstellungsSaal);
-
-        //Check Fsk
-        checkFSK(Spielzeiten timeslot, Kinofilm vorstellungsFilm);
-
-        //Check Laufzeiten
-        checkLaufzeiten(Spielzeiten timeslot, Kinofilm vorstellungsFilm);
-
-        //Check Werbefilme
-        checkWerbefilme(Spielzeiten timeslot, Kinofilm vorstellungsFilm, Werbefilm werbungen, werbezeitMax);
-
-        //ArrayList<Integer> werbungen = new ArrayList();
-
-    }
-
-    //Default parameter eintrittspreis = 7;
-
-    public Vorstellung(){
-        this.eintrittspreis = 7;
-        this.werbezeitMax = 20;
-
+        // TODO: In loop einbauen.
+        check3D(vorstellungsFilm, vorstellungsSaal);
+        checkFSK(vorstellungsTimeslot, vorstellungsFilm);
+        checkLaufzeiten(vorstellungsFilm, vorstellungsTimeslot);
+        checkWerbefilmeLaufzeit(vorstellungsTimeslot, vorstellungsFilm, werbungen, werbezeitMax);
     }
 
     //Check Methoden
-
-    //Check 3D
     private boolean check3D(Kinofilm vorstellungsFilm, Saal vorstellungsSaal) {
 
-        if ((vorstellungsFilm.get3D() == true && vorstellungsSaal.getThreeD() == false) != true) {
+        //Wenn der Saal 3D-Fähig ist, immer True
+        if (vorstellungsSaal.getThreeD())
             return true;
-        } else {
-            return false;
-        }
+
+        //Wenn Saal 2D und der Film auch
+        if (!vorstellungsFilm.getThreeD() && !vorstellungsSaal.getThreeD())
+            return true;
+
+        else { return false; }
     }
 
     //Check FSK
-    private boolean checkFSK(Spielzeiten timeslot, Kinofilm vorstellungsFilm) {
+    private boolean checkFSK(Spielzeiten vorstellungsTimeslot, Kinofilm vorstellungsFilm) {
 
-        if (timeslot == Spielzeiten.SLOT_1500 && vorstellungsFilm.getFsk() == Fsk.FSK_16) {
-            return false;
-        } else if (timeslot == Spielzeiten.SLOT_1500 && vorstellungsFilm.getFsk() == Fsk.FSK_18) {
-            return false;
-        } else if (timeslot == Spielzeiten.SLOT_1730 && vorstellungsFilm.getFsk() == Fsk.FSK_16) {
-            return false;
-        } else if (timeslot == Spielzeiten.SLOT_1730 && vorstellungsFilm.getFsk() == Fsk.FSK_18) {
-            return false;
-        } else if (timeslot == Spielzeiten.SLOT_2000 && vorstellungsFilm.getFsk() == Fsk.FSK_18) {
-            return false;
-        } else {
-            return true;
-        }
+        // Um 15 Uhr und um 17:30 dürfen keine FSK16 und FSK18 Filme gezeigt werden
+        if ((vorstellungsTimeslot == Spielzeiten.SLOT_1500 || vorstellungsTimeslot == Spielzeiten.SLOT_1730) &&
+                (vorstellungsFilm.getFsk() == Fsk.FSK_16 || vorstellungsFilm.getFsk() == Fsk.FSK_18)){
+            return false;}
+
+        // Um 20:00 dürfen keine FSK18 Filme gezeigt werden
+        else if (vorstellungsTimeslot == Spielzeiten.SLOT_2000 && vorstellungsFilm.getFsk() == Fsk.FSK_18){
+            return false;}
+
+        // Alle anderen Kombinationen sind gültig
+        else { return true; }
     }
-    //Check Laufzeiten
-    private boolean checkLaufzeiten(Spielzeiten timeslot, Kinofilm vorstellungsFilm) {
-        if ((timeslot == Spielzeiten.SLOT_1500) && (vorstellungsFilm.getLaufzeit() <
-                Spielzeiten.SLOT_1500.getSlotDuration())){
-            return false;
-            }else if ((timeslot == Spielzeiten.SLOT_1730) && (vorstellungsFilm.getLaufzeit() <
-                Spielzeiten.SLOT_1730.getSlotDuration())){
-                return false;
-            }else if ((timeslot == Spielzeiten.SLOT_2000) && (vorstellungsFilm.getLaufzeit() <
-                Spielzeiten.SLOT_2000.getSlotDuration())){
-                return false;
-            }else if ((timeslot == Spielzeiten.SLOT_2300) && (vorstellungsFilm.getLaufzeit() <
-                Spielzeiten.SLOT_2300.getSlotDuration())){
-                return false;
-        }else {
-            return true;
-        }
 
+    //Check Laufzeiten
+    private boolean checkLaufzeiten(Kinofilm vorstellungsFilm, Spielzeiten vorstellungsTimeslot) {
+        if (vorstellungsTimeslot.getSlotDuration() < vorstellungsFilm.getLaufzeit()) {return false;}
+        else {return true;}
     }
 
     //Check Werbefilme
-    private boolean checkWerbefilme(Spielzeiten timeslot, Kinofilm vorstellungsFilm, Werbefilm werbungen,
-                                    int werbezeitMax){
+    private boolean checkWerbefilmeLaufzeit(Spielzeiten vorstellungsTimeslot,
+                                            Kinofilm vorstellungsFilm,
+                                            Werbefilm[] werbungen,
+                                            int werbezeitMax){
         if((Spielzeiten.SLOT_1500.getSlotDuration() - vorstellungsFilm.getLaufzeit()) > werbezeitMax) {
             return false;
 

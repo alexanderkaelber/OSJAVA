@@ -15,6 +15,4 @@ public enum Spielzeiten {
     public int getSlotDuration(){
         return this.slotDuration;
     }
-
-
 }
