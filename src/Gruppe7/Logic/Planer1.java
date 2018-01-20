@@ -21,31 +21,42 @@ public class Planer
     }
 
     // Erstellt einen zufälligen Spielplan
-    public Spielplan CreateRandomSpielplan()
+    public void CreateRandomSpielplan()
     {
-        Kinofilm kinofilm;
-        Werbefilm werbefilm;
-        Saal saal;
-        int eintritt;
+        // Für 21 Tage
+        for (int i = 0; i < 21; i++)
+        {
+            // Für jeden Saal
+            for (int j = SaalVerwaltung.getSize(); i > 0; i--)
+            {
+                // Für jeden Timeslot
+                for (int k = 4; i > 0; i++)
+                {
 
-        int randomIndexKinofilm = ThreadLocalRandom.current().nextInt(0, FilmVerwaltung.filme.length())
-        kinofilm =
-    }
-
-
-    private void fillPlan(){
-        for (int i = 0; i < 21; i++) {
-            Vorstellung newVorstellung = new Vorstellung(kinofilm, werbefilm, saal, eintritt);
-
-            //if () //TODO: hier weiter
+                    randomSpielplan.add(new Vorstellung());
+                }
+            }
         }
     }
 
-    private Vorstellung createVorstellung()
-    {
-        //Code
-        return null;
-    }
+    // TODO: Vorstellungen werden bei Nicole erstellt.
+//    private Vorstellung createVorstellung()
+//    {
+//        Kinofilm kinofilm;
+//        Werbefilm werbefilm;
+//        Saal saal;
+//
+//
+//        int KinofilmIndex = ThreadLocalRandom.current().nextInt(0, FilmVerwaltung.getSize());
+//        int WerbefilmIndex = ThreadLocalRandom.current().nextInt(0, WerbefilmVerwaltung.getSize());
+//        int SaalIndex = ThreadLocalRandom.current().nextInt(0, SaalVerwaltung.getSize());
+//        int eintritt = 7; // TODO: Eintritt variabel gestalten.
+//
+//        return new Vorstellung(FilmVerwaltung.getFilme().get(KinofilmIndex),
+//                                WerbefilmVerwaltung.getWerbefilme().get(WerbefilmIndex),
+//                                SaalVerwaltung.getSaele().get(SaalIndex),
+//                                , int);
+//    }
 
     //Implementation not clear yet.
     public int RandomNumberGenerator()

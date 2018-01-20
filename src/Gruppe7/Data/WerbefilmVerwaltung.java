@@ -8,6 +8,6 @@ public class WerbefilmVerwaltung
     static private ArrayList<Werbefilm> werbefilme = new ArrayList<>();
 
     //Getter
-    static ArrayList<Werbefilm> getWerbefilme() { return werbefilme; }
-    static int getSize() { return werbefilme.size(); }
+    public static ArrayList<Werbefilm> getWerbefilme() { return werbefilme; }
+    public static int getSize() { return werbefilme.size(); }
 }
