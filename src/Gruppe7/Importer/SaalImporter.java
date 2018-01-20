@@ -1,18 +1,50 @@
-/*
 package Gruppe7.Importer;
 
-public class SaalImporter extends Datei
-{
-    public SaalImporter(int in_PlaetzeLoge, int in_PlaetheParkett, boolean in_3D, int in_SaalNummer)
-    {
-        //Constructor
-    }
 
-    public String SplitString()
-    {
-        //A Method to split the incomming Kinofilm from File as we need it.
-        //Was override in UML because we thought there were a method in the Java lib. to override from.
-        return null;
+public class SaalImporter extends Datei {
+
+    private Datei importFileSaele;
+    private String importString;
+    private int importSaalNr;
+    private int importPlaetzeParkett;
+    private int importPlaetzeLoge;
+    private boolean importThreeD;
+
+
+
+    /**
+     * Konstruktor fuer Objekte der Klasse Datei
+     * Legt einen String mit dem Namen der zu bearbeitenden Datei an.
+     *
+     * @param in_name (String): Dateiname der benutzt werden soll.
+     */
+    public SaalImporter(String in_name) {
+        super(in_name);
+
+        importFileSaele = new Datei(in_name);
+        importFileSaele.openInFile_FS();
+
+        while (importFileSaele.eof()==false){
+            importString = importFileSaele.readLine_FS();
+            if (importString != null){
+                System.out.println(importString);
+
+                String array[] = importString.split(";");
+
+                importSaalNr = Integer.valueOf(array[0]);
+                importPlaetzeParkett = Integer.valueOf(array[1]);
+                importPlaetzeLoge = Integer.valueOf(array[2]);
+                importThreeD = Boolean.valueOf(array[2]);
+
+                
+
+            }
+
+        }
+
+
+
+
+
     }
 }
-*/

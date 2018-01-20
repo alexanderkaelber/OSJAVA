@@ -4,6 +4,7 @@ import java.util.Random;
 
 import Gruppe7.Data.*;
 import Gruppe7.Importer.Datei;
+import Gruppe7.Importer.SaalImporter;
 import Gruppe7.Importer.readCSV;
 
 public class Main {
@@ -25,24 +26,17 @@ public class Main {
 
 
 //Import Test
-       Datei testImport;
-       testImport = new Datei("C:/import/saele.csv");
-       testImport.openInFile_FS();
+       //Datei testImport;
+       //testImport = new Datei("C:/import/saele.csv");
+       //testImport.openInFile_FS();
        //testImport.readLine_FS();
        //testImport.readLine();
 
 
+        new SaalImporter("C:/import/saele.csv");
 
 
-        private TestSchleife(Datei in_testImport);
-
-        do {
-            System.out.println(testImport.readLine());
-        } while (System.out.println(testImport.readLine())==null);
-
-
-
-
+        /*System.out.println(testImport.readLine());
         System.out.println(testImport.readLine());
         System.out.println(testImport.readLine());
         System.out.println(testImport.readLine());
@@ -50,8 +44,7 @@ public class Main {
         System.out.println(testImport.readLine());
         System.out.println(testImport.readLine());
         System.out.println(testImport.readLine());
-        System.out.println(testImport.readLine());
-        System.out.println(testImport.readLine());
+        System.out.println(testImport.readLine());*/
 
 
 

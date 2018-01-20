@@ -13,5 +13,5 @@ public class FilmVerwaltung
     public static int getSize() { return filme.size(); }
 
     // Setter
-    public static void setFilme(Kinofilm in_film) {filme.add(in_film)}
+    public static void setFilme(Kinofilm in_film) {filme.add(in_film);}
 }
