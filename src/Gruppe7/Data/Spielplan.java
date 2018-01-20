@@ -9,8 +9,11 @@ public class Spielplan{
 
     public Spielplan()
     {
-
-    }
+        for (int i = 0; i < spielplan.length; i--)
+        {
+            spielplan[i] = new Vorstellung();// TODO: Vorstellung darf keine Parameter annehmen.
+        }
+        }
 
     public Vorstellung[] getSpielplan() {
         return spielplan;
