@@ -26,4 +26,3 @@ package Gruppe7.Data;
     }
 
 
-
