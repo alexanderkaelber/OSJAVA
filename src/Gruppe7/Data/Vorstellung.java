@@ -1,6 +1,7 @@
 package Gruppe7.Data;
 
 import java.util.stream.IntStream;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Vorstellung {
 
@@ -10,22 +11,39 @@ public class Vorstellung {
     private Saal vorstellungsSaal;
     private Spielzeiten vorstellungsTimeslot;
     private int eintrittspreis = 7; // TODO: Hardcoded
-    private int werbezeitMax = 20;
+
+    // Constant
+    public static final int werbezeitMax = 20;
 
     //Constructor
     public Vorstellung()
     {
-        vorstellungsFilm = FilmVerwaltung.getFilme().get(0);
-        werbungen[0] = WerbefilmVerwaltung.getWerbefilme().get(0);
-        werbungen[1] =  WerbefilmVerwaltung.getWerbefilme().get(1); // TODO: Anzhal der Werbefilme über ihre Länge geregelt
-        vorstellungsSaal = SaalVerwaltung.getSaele().get(0);
-        vorstellungsTimeslot = Spielzeiten.SLOT_1500;
+        //Boolean Check Variablen
+        boolean threeD = false;
+        boolean FSK = false;
+        boolean laufzeiten = false;
+        boolean werbefilme = false;
 
-        // TODO: In loop einbauen.
-        check3D(vorstellungsFilm, vorstellungsSaal);
-        checkFSK(vorstellungsTimeslot, vorstellungsFilm);
-        checkLaufzeiten(vorstellungsFilm, vorstellungsTimeslot);
-        checkWerbefilmeLaufzeit(vorstellungsTimeslot, vorstellungsFilm, werbungen, werbezeitMax);
+        // Solange Vorstellungen erstellen, bis gültig
+        while (!threeD || !FSK || !laufzeiten || !werbefilme) {
+
+            //Random Index für Vorstellungserstellung
+            int kinofilmIndex = ThreadLocalRandom.current().nextInt(0, FilmVerwaltung.getSize());
+            int werbefilmIndex = ThreadLocalRandom.current().nextInt(0, WerbefilmVerwaltung.getSize());
+            int saalIndex = ThreadLocalRandom.current().nextInt(0, SaalVerwaltung.getSize());
+            int vorstellungsTimeslotIndex = ThreadLocalRandom.current().nextInt(0, 3);
+
+            vorstellungsFilm = FilmVerwaltung.getFilme().get(kinofilmIndex);
+            werbungen[0] = WerbefilmVerwaltung.getWerbefilme().get(werbefilmIndex);
+            //werbungen[1] = WerbefilmVerwaltung.getWerbefilme().get(1); // TODO: Anzhal der Werbefilme über ihre Länge geregelt
+            vorstellungsSaal = SaalVerwaltung.getSaele().get(saalIndex);
+            vorstellungsTimeslot = Spielzeiten.values()[vorstellungsTimeslotIndex];
+
+            threeD = check3D(vorstellungsFilm, vorstellungsSaal);
+            FSK = checkFSK(vorstellungsTimeslot, vorstellungsFilm);
+            laufzeiten = checkLaufzeiten(vorstellungsFilm, vorstellungsTimeslot);
+            werbefilme = checkWerbefilmeLaufzeit(vorstellungsTimeslot, vorstellungsFilm, werbungen, werbezeitMax);
+        }
     }
 
     //Check Methoden
@@ -75,16 +93,14 @@ public class Vorstellung {
             sumWerbungDuration += w.getLaufzeit();
         }
 
-        if ((sumWerbungDuration > vorstellungsTimeslot.getSlotDuration()) || (sumWerbungDuration> 20))
-        {return false;}
-        else { return true; }
+        /* Wenn die Summe der Werbezeiten größer ist, als die verbleibende Zeit im Timeslot abzüglich des Hauptfilms
+            oder der Werbeblock länger als 20min ist return: false*/
+        if ((sumWerbungDuration > (vorstellungsTimeslot.getSlotDuration()- vorstellungsFilm.getLaufzeit())) ||
+                (sumWerbungDuration > werbezeitMax)) {return false;}
+        else {return true;}
     }
 
-
-    //Ende Check Methoden
-
-
-    //get-Methoden
+    //Getter
     public Kinofilm getKinofilm(){
         return vorstellungsFilm;
     }
@@ -92,21 +108,10 @@ public class Vorstellung {
         return vorstellungsSaal;
     }
     public Spielzeiten getSpielzeiten(){
-        return timeslot;
+        return vorstellungsTimeslot;
     }
     public Werbefilm[] getWerbefilme(){
         return werbungen;
-        //eventuell Liste/Collection, weil wir nicht wissen, wie viele Werbefilme
-
-    }
-
-
-        /*Code
-
-        IF x <= 20 min, dann x, sonst <= 20 min --> das muss in den Konstruktor
-        IF 120 <= Kinofilm, dann muss er um 20 Uhr laufen --> das muss in den Konstruktor
-        Arraylist, im Konstruktor muss ich Arraylist mit einzelnen Werbefilmen befüllen
-
-         */
+    } // TODO: Festlegung der Anzahl der Webefilmelemente wo?
 
 }

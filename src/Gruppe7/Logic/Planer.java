@@ -34,26 +34,6 @@ public class Planer
         }
     }
 
-    // TODO: Vorstellungen werden bei Nicole erstellt.
-//    private Vorstellung createVorstellung()
-//    {
-//        Kinofilm kinofilm;
-//        Werbefilm werbefilm;
-//        Saal saal;
-//
-//
-//        int KinofilmIndex = ThreadLocalRandom.current().nextInt(0, FilmVerwaltung.getSize());
-//        int WerbefilmIndex = ThreadLocalRandom.current().nextInt(0, WerbefilmVerwaltung.getSize());
-//        int SaalIndex = ThreadLocalRandom.current().nextInt(0, SaalVerwaltung.getSize());
-//        int eintritt = 7; // TODO: Eintritt variabel gestalten.
-//
-//        return new Vorstellung(FilmVerwaltung.getFilme().get(KinofilmIndex),
-//                                WerbefilmVerwaltung.getWerbefilme().get(WerbefilmIndex),
-//                                SaalVerwaltung.getSaele().get(SaalIndex),
-//                                , int);
-//    }
-
-
     private boolean checkGenre()
     {
         //Temporäre Genre-Liste
