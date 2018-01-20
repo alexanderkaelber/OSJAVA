@@ -1,11 +1,7 @@
 package Gruppe7;
 import java.io.IOException;
-import java.util.Random;
 
-import Gruppe7.Data.*;
-import Gruppe7.Importer.Datei;
-import Gruppe7.Importer.SaalImporter;
-import Gruppe7.Importer.readCSV;
+import Gruppe7.Importer.*;
 
 public class Main {
 
@@ -13,43 +9,20 @@ public class Main {
 	// Main Method
 
         //Einstieg ins Programm
-        System.out.println("Hier ist der Einstieg ins Programm");
+        System.out.println("Hier ist der Einstieg ins Programm: \n");
 
 
-        //Erzeugen einer Instanz vom Objekt Saal
-        Saal testSaal;
-        testSaal = new Saal(100, 150, false, 1);
-        System.out.println("Plätze Loge: " + testSaal.getPlaetzeLoge());
-        System.out.println("Plätze Parkett: " + testSaal.getPlaetzeParkett());
-        System.out.println("3D Fähig: " + testSaal.getThreeD());
-        System.out.println("Saal Nummer: " + testSaal.getSaalNummer());
+
 
 
 //Import Test
-       //Datei testImport;
-       //testImport = new Datei("C:/import/saele.csv");
-       //testImport.openInFile_FS();
-       //testImport.readLine_FS();
-       //testImport.readLine();
+
+        new KinofilmImporter("C:/import/filme.csv");
+
+        //new SaalImporter("C:/import/saele.csv");
 
 
-        new SaalImporter("C:/import/saele.csv");
-
-
-        /*System.out.println(testImport.readLine());
-        System.out.println(testImport.readLine());
-        System.out.println(testImport.readLine());
-        System.out.println(testImport.readLine());
-        System.out.println(testImport.readLine());
-        System.out.println(testImport.readLine());
-        System.out.println(testImport.readLine());
-        System.out.println(testImport.readLine());
-        System.out.println(testImport.readLine());*/
-
-
-
-      // System.out.println(testImport.);
-
+        //new WerbefilmImporter("C:/import/werbespots.csv");
 
 
             }
