@@ -32,7 +32,7 @@ public class Planer
                 // Für jeden Timeslot
                 for (int k = 4; i > 0; i++)
                 {
-                    randomSpielplan.add(new Vorstellung()); // TODO: Vorstellungsklasse muss abgeändert werden. Keine Paramter.
+                    //randomSpielplan.add(new Vorstellung()); // TODO: Vorstellungsklasse muss abgeändert werden. Keine Paramter.
                 }
             }
         }
@@ -61,10 +61,10 @@ public class Planer
     private boolean checkGenre()
     {
         //Temporäre GenreVariable zur Prüfung
-        for (Genre g: Genre)
-        {
-            // TODO: Enumerable Collection gebruacht
-        }
+//        for (Genre g: Genre)
+//        {
+//            // TODO: Enumerable Collection gebruacht
+//        }
 
 
         // TODO: Ist jedes Genre im randomSpielplan einmal vertreten?

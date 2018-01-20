@@ -20,10 +20,10 @@ public class Vorstellung
         ohne Parameter reinschreiben?
         Default parameter googlen*/
 
-        vorstellungsFilm = in_kinofilm;
-        werbungen = in_werbefilm;
-        vorstellungsSaal = in_saal;
-        timeslot = in_timeslot;
+//        vorstellungsFilm = in_kinofilm;
+//        werbungen = in_werbefilm;
+//        vorstellungsSaal = in_saal;
+//        timeslot = in_timeslot;
 
 
         // check3D();
@@ -88,19 +88,19 @@ public class Vorstellung
 
 
     //get-Methoden
-    public Kinofilm getKinofilm(){
-        return vorstellungsFilm;
-    }
-    public int getSaal(){
-        return vorstellungsSaal;
-    }
-    public Spielzeiten getSpielzeiten(){
-        return timeslot;
-    }
-    public Werbefilm[] getWerbefilme(){
-        return werbungen;
-        //eventuell Liste/Collection, weil wir nicht wissen, wie viele Werbefilme
-    }
+//    public Kinofilm getKinofilm(){
+//        return vorstellungsFilm;
+//    }
+//    public int getSaal(){
+//        return vorstellungsSaal;
+//    }
+//    public Spielzeiten getSpielzeiten(){
+//        return timeslot;
+//    }
+//    public Werbefilm[] getWerbefilme(){
+//        return werbungen;
+//        //eventuell Liste/Collection, weil wir nicht wissen, wie viele Werbefilme
+//    }
 
     //check-Methoden for Constructor
 
