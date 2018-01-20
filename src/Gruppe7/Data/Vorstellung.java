@@ -75,15 +75,9 @@ public class Vorstellung
     // Getter
     public Kinofilm getKinofilm(){ return film; }
     public int getSaal(){ return saal; }
-    public Spielzeiten getSpielzeiten(){
-        return timeslot;
-    }
-    public Werbefilm[] getWerbefilme(){
-        return werbungen;
+    public Spielzeiten getSpielzeiten(){ return timeslot; }
+    public Werbefilm[] getWerbefilme(){ return werbungen; }
         //eventuell Liste/Collection, weil wir nicht wissen, wie viele Werbefilme
-
-
-    }
 
     //check-Methoden for Constructor
 
