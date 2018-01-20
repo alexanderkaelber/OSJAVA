@@ -137,6 +137,7 @@ public class KinofilmImporter extends Datei {
                 System.out.println(importKinofilmGenres.size());
             }
             importKinofilmMietpreis = Integer.valueOf(arrayKinofilm[4]);
+            System.out.println(importKinofilmMietpreis);
             importKinofilmBeliebtheit = Integer.valueOf(arrayKinofilm[5]);
             importKinofilmLaufzeit = Integer.valueOf(arrayKinofilm[6]);
             importKinofilmSprache = String.valueOf(arrayKinofilm[7]);
@@ -144,6 +145,12 @@ public class KinofilmImporter extends Datei {
             importKinofilmErscheinungsjahr=Integer.valueOf(arrayKinofilm[9]);
             importThreeD=Boolean.valueOf(arrayKinofilm[10]);
 
+
+            //Constructor
+
+            //SaalVerwaltung.setSaele(new Saal(importPlaetzeLoge, importPlaetzeParkett, importThreeD, importSaalNr));
+
+            FilmVerwaltung.setFilme(new Kinofilm (importKinofilmTitel, importKinofilmLaufzeit, importThreeD, importKinofilmSprache, importKinofilmRegisseur, importKinofilmErscheinungsjahr, importKinofilmErscheinungsland, importKinofilmBeliebtheit, importKinofilmMietpreis, importKinofilmFSK, importKinofilmGenres));
         }
 
 
