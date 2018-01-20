@@ -1,117 +1,158 @@
 package Gruppe7.Data;
+import Gruppe7.Data.*;
+import java.util.*;
 
-public class Vorstellung
-{
-    private Kinofilm film;
+
+public class Vorstellung {
+
+    //Attribute
+    private Kinofilm vorstellungsFilm;
     private Werbefilm[] werbungen;
-    private int einnahmenAusWerbung;
-    private int einnahmenAusKArtenverkaeufen;
-    private int saal;
+    private Saal vorstellungsSaal;
     private Spielzeiten timeslot;
-    int eintrittspreis = 7;
+    private int einnahmenAusWerbung;
+    private int einnahmenAusKartenverkaeufen;
+    private int eintrittspreis = 7;
+    private int werbezeitMax = 20;
+
+
+    //Constructor
 
     public Vorstellung(Kinofilm in_kinofilm,
                        Werbefilm[] in_werbefilm,
                        Saal in_saal,
-                       Spielzeiten in_timeslot) {
-        /* Wie fange ich hier an? Muss ich erst noch die notwendigen Daten aus den anderen Klassen über get-Methoden
-        herholen oder läuft das durch die Komposition automatisch?
-        Muss ich den Eintrittspreis hier mit in den Konstruktor tun oder kann ich ihn mit einem Konstruktor
-        ohne Parameter reinschreiben?
-        Default parameter googlen*/
+                       Spielzeiten in_timeslot,
+                       int eintrittspreis,
+                       int werbezeitMax) {
 
-//        vorstellungsFilm = in_kinofilm;
-//        werbungen = in_werbefilm;
-//        vorstellungsSaal = in_saal;
-//        timeslot = in_timeslot;
+        // --> Default parameter googlen
+
+        vorstellungsFilm = in_kinofilm;
+        werbungen = in_werbefilm;
+        vorstellungsSaal = in_saal;
+        timeslot = in_timeslot;
+        this.eintrittspreis = eintrittspreis;         // ????
+        this.werbezeitMax = werbezeitMax;             // ????
 
 
-        // check3D();
+        //Check 3D
+        check3D(Kinofilm vorstellungsFilm, Saal vorstellungsSaal);
+
+        //Check Fsk
+        checkFSK(Spielzeiten timeslot, Kinofilm vorstellungsFilm);
+
+        //Check Laufzeiten
+        checkLaufzeiten(Spielzeiten timeslot, Kinofilm vorstellungsFilm);
+
+        //Check Werbefilme
+        checkWerbefilme(Spielzeiten timeslot, Kinofilm vorstellungsFilm, Werbefilm werbungen, werbezeitMax);
+
+        //ArrayList<Integer> werbungen = new ArrayList();
 
     }
 
-    //Check Methoden hier
+    //Default parameter eintrittspreis = 7;
+
+    public Vorstellung(){
+        this.eintrittspreis = 7;
+        this.werbezeitMax = 20;
+
+    }
+
+    //Check Methoden
 
     //Check 3D
     private boolean check3D(Kinofilm vorstellungsFilm, Saal vorstellungsSaal) {
 
         if ((vorstellungsFilm.get3D() == true && vorstellungsSaal.getThreeD() == false) != true) {
-
-
-            //Check Fsk
-                    // checkFSK();
-
-            //Check Spielzeiten
-
-
             return true;
         } else {
             return false;
         }
     }
 
-
+    //Check FSK
     private boolean checkFSK(Spielzeiten timeslot, Kinofilm vorstellungsFilm) {
 
-        if(timeslot == Spielzeiten.SLOT_1500 && vorstellungsFilm.getFsk() == Fsk.FSK_16) {
+        if (timeslot == Spielzeiten.SLOT_1500 && vorstellungsFilm.getFsk() == Fsk.FSK_16) {
             return false;
-        }else if (timeslot == Spielzeiten.SLOT_1500 && vorstellungsFilm.getFsk() == Fsk.FSK_18){
+        } else if (timeslot == Spielzeiten.SLOT_1500 && vorstellungsFilm.getFsk() == Fsk.FSK_18) {
             return false;
-        }else if (timeslot == Spielzeiten.SLOT_1730 && vorstellungsFilm.getFsk() == Fsk.FSK_16) {
+        } else if (timeslot == Spielzeiten.SLOT_1730 && vorstellungsFilm.getFsk() == Fsk.FSK_16) {
             return false;
-        }else if (timeslot == Spielzeiten.SLOT_1730 && vorstellungsFilm.getFsk() == Fsk.FSK_18) {
+        } else if (timeslot == Spielzeiten.SLOT_1730 && vorstellungsFilm.getFsk() == Fsk.FSK_18) {
             return false;
-        }else if (timeslot == Spielzeiten.SLOT_2000 && vorstellungsFilm.getFsk() == Fsk.FSK_18) {
+        } else if (timeslot == Spielzeiten.SLOT_2000 && vorstellungsFilm.getFsk() == Fsk.FSK_18) {
             return false;
+        } else {
+            return true;
+        }
+    }
+    //Check Laufzeiten
+    private boolean checkLaufzeiten(Spielzeiten timeslot, Kinofilm vorstellungsFilm) {
+        if ((timeslot == Spielzeiten.SLOT_1500) && (vorstellungsFilm.getLaufzeit() <
+                Spielzeiten.SLOT_1500.getSlotDuration())){
+            return false;
+            }else if ((timeslot == Spielzeiten.SLOT_1730) && (vorstellungsFilm.getLaufzeit() <
+                Spielzeiten.SLOT_1730.getSlotDuration())){
+                return false;
+            }else if ((timeslot == Spielzeiten.SLOT_2000) && (vorstellungsFilm.getLaufzeit() <
+                Spielzeiten.SLOT_2000.getSlotDuration())){
+                return false;
+            }else if ((timeslot == Spielzeiten.SLOT_2300) && (vorstellungsFilm.getLaufzeit() <
+                Spielzeiten.SLOT_2300.getSlotDuration())){
+                return false;
         }else {
             return true;
         }
 
-        //(vorstellungsFilm.3D = true + vorstellungsSaal.3D = false) = false
-
-        //Ende Check Methode
     }
 
-    // Getter
-    public Kinofilm getKinofilm(){ return film; }
-    public int getSaal(){ return saal; }
-    public Spielzeiten getSpielzeiten(){ return timeslot; }
-    public Werbefilm[] getWerbefilme(){ return werbungen; }
+    //Check Werbefilme
+    private boolean checkWerbefilme(Spielzeiten timeslot, Kinofilm vorstellungsFilm, Werbefilm werbungen,
+                                    int werbezeitMax){
+        if((Spielzeiten.SLOT_1500.getSlotDuration() - vorstellungsFilm.getLaufzeit()) > werbezeitMax) {
+            return false;
+
+        }else if((Spielzeiten.SLOT_1730.getSlotDuration() - vorstellungsFilm.getLaufzeit()) > werbezeitMax){
+            return false;
+        }else if((Spielzeiten.SLOT_2000.getSlotDuration() - vorstellungsFilm.getLaufzeit()) > werbezeitMax){
+            return false;
+        }else if((Spielzeiten.SLOT_2300.getSlotDuration() - vorstellungsFilm.getLaufzeit()) > werbezeitMax){
+            return false;
+        }else {
+            return true; //(int (Spielzeiten.SLOT_1500.getSlotDuration() - vorstellungsFilm.getLaufzeit()));
+
+        }
+    }
+
+
+    //Ende Check Methoden
+
+
+    //get-Methoden
+    public Kinofilm getKinofilm(){
+        return vorstellungsFilm;
+    }
+    public Saal getSaal(){
+        return vorstellungsSaal;
+    }
+    public Spielzeiten getSpielzeiten(){
+        return timeslot;
+    }
+    public Werbefilm[] getWerbefilme(){
+        return werbungen;
         //eventuell Liste/Collection, weil wir nicht wissen, wie viele Werbefilme
 
-    //check-Methoden for Constructor
-
-
-        /* () Film- und ein Saalobjekt
-         * film.3D = 3D-Eigenschaft des Films, film.3D==saal.3D mit if-Funktion */
-    /*Code
-        IF Spalte 3D aus saele.csv = false, dann dürfen in den jeweiligen Sälen nur Kinofilme aus filme.csv mit
-        Spalte 3D = false gezeigt werden, sonst ist es egal
-
     }
- */
-        /*Code
-        FSK 0,6,12,16,18
-        FSK 16 nur um 20 oder 23 Uhr
-        FSK 18 nur um 23 Uhr
-        siehe check3D, FSK vergleichen über Enumeration Spielzeiten
 
-        return false;  */
-
-    private boolean checkLaufzeiten()
-    {
 
         /*Code
-        Timeslot - Kinofilm = x
-        Timeslot>=Kinofilm
+
         IF x <= 20 min, dann x, sonst <= 20 min --> das muss in den Konstruktor
-        IF 120 <= Kinofilm <= 160, dann muss er um 20 Uhr laufen --> das muss in den Konstruktor
+        IF 120 <= Kinofilm, dann muss er um 20 Uhr laufen --> das muss in den Konstruktor
+        Arraylist, im Konstruktor muss ich Arraylist mit einzelnen Werbefilmen befüllen
 
-        IF Kinofilm < 160, dann fällt er komplett raus
-        über die Grenzen müssen wir noch sprechen, worauf legen wir uns fest?
          */
-        return false;
-    }
-
 
 }
