@@ -88,5 +88,6 @@ public class Planer
         return null;
     }
 
-    public Spielplan getImprovedSpielplan() { return improvedSpielplan;}
+    // Getter
+    public ArrayList<Vorstellung> getImprovedSpielplan() { return improvedSpielplan; }
 }
