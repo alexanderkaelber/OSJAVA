@@ -2,25 +2,12 @@ package Gruppe7.Data;
 
 import java.util.ArrayList;
 
+// Auf die Verwaltungsklassen muss aus dem gesamten Kode zugegriffen werden
 public class WerbefilmVerwaltung
 {
-<<<<<<< HEAD
-    // Auf die Verwaltungsklassen muss aus dem gesamten Kode zugegriffen werden
-    static private ArrayList<Werbefilm> werbefilme = new ArrayList<Werbefilm>();
+    static private ArrayList<Werbefilm> werbefilme = new ArrayList<>();
 
     //Getter
-    static ArrayList<Werbefilm> getWerbefilme() {
-=======
-    private ArrayList<Werbefilm> werbefilme = new ArrayList<Werbefilm>();
-
-    public WerbefilmVerwaltung()
-    {
-        //Constructor
-    }
-
-    //Getter
-    public ArrayList<Werbefilm> getWerbefilme() {
->>>>>>> 9f670fa... Kinofilm fertig
-        return werbefilme;
-    }
+    public static ArrayList<Werbefilm> getWerbefilme() { return werbefilme; }
+    public static int getSize() { return werbefilme.size(); }
 }

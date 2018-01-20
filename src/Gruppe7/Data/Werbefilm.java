@@ -1,17 +1,18 @@
 package Gruppe7.Data;
 
-public class Werbefilm
+public class Werbefilm extends Film
 {
     private int umsatzProZuschauer;
 
-    public Werbefilm(int in_umsatzProZuschauer)
+    public Werbefilm(String in_titel, int in_laufzeit, int in_umsatzProZuschauer)
     {
-        //Constructor
+        super(in_titel, in_laufzeit);
+        umsatzProZuschauer = in_umsatzProZuschauer;
     }
 
+    //Getter
     public int getUmsatzProZuschauer()
     {
-        //Code
-        return 0;
+       return umsatzProZuschauer;
     }
 }

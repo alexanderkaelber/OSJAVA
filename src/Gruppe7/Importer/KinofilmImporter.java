@@ -1,4 +1,3 @@
-/*
 package Gruppe7.Importer;
 
 public class KinofilmImporter extends Datei
@@ -32,4 +31,3 @@ public class KinofilmImporter extends Datei
     }
 
 }
-*/
