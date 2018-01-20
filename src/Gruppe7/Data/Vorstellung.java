@@ -1,140 +1,117 @@
 package Gruppe7.Data;
 
-public class Vorstellung
-{
-    private Kinofilm film;
-    private Werbefilm[] werbungen;
-    private int einnahmenAusWerbung;
-    private int einnahmenAusKArtenverkaeufen;
-    private int saal;
-    private Spielzeiten timeslot;
-    int eintrittspreis = 7;
+import java.util.stream.IntStream;
+import java.util.concurrent.ThreadLocalRandom;
 
-    public Vorstellung(Kinofilm in_kinofilm,
-                       Werbefilm[] in_werbefilm,
-                       Saal in_saal,
-                       Spielzeiten in_timeslot) {
-        /* Wie fange ich hier an? Muss ich erst noch die notwendigen Daten aus den anderen Klassen über get-Methoden
-        herholen oder läuft das durch die Komposition automatisch?
-        Muss ich den Eintrittspreis hier mit in den Konstruktor tun oder kann ich ihn mit einem Konstruktor
-        ohne Parameter reinschreiben?
-        Default parameter googlen*/
+public class Vorstellung {
 
-//        vorstellungsFilm = in_kinofilm;
-//        werbungen = in_werbefilm;
-//        vorstellungsSaal = in_saal;
-//        timeslot = in_timeslot;
+    //Attribute
+    private Kinofilm vorstellungsFilm;
+    private Werbefilm[] werbungen; // TODO: Anzhal der Werbefilme über ihre Länge geregelt
+    private Saal vorstellungsSaal;
+    private Spielzeiten vorstellungsTimeslot;
+    private int eintrittspreis = 7; // TODO: Hardcoded
 
+    // Constant
+    public static final int werbezeitMax = 20;
 
-        // check3D();
+    //Constructor
+    public Vorstellung()
+    {
+        //Boolean Check Variablen
+        boolean threeD = false;
+        boolean FSK = false;
+        boolean laufzeiten = false;
+        boolean werbefilme = false;
 
+        // Solange Vorstellungen erstellen, bis gültig
+        while (!threeD || !FSK || !laufzeiten || !werbefilme) {
+
+            //Random Index für Vorstellungserstellung
+            int kinofilmIndex = ThreadLocalRandom.current().nextInt(0, FilmVerwaltung.getSize());
+            int werbefilmIndex = ThreadLocalRandom.current().nextInt(0, WerbefilmVerwaltung.getSize());
+            int saalIndex = ThreadLocalRandom.current().nextInt(0, SaalVerwaltung.getSize());
+            int vorstellungsTimeslotIndex = ThreadLocalRandom.current().nextInt(0, 3);
+
+            vorstellungsFilm = FilmVerwaltung.getFilme().get(kinofilmIndex);
+            werbungen[0] = WerbefilmVerwaltung.getWerbefilme().get(werbefilmIndex);
+            //werbungen[1] = WerbefilmVerwaltung.getWerbefilme().get(1); // TODO: Anzhal der Werbefilme über ihre Länge geregelt
+            vorstellungsSaal = SaalVerwaltung.getSaele().get(saalIndex);
+            vorstellungsTimeslot = Spielzeiten.values()[vorstellungsTimeslotIndex];
+
+            threeD = check3D(vorstellungsFilm, vorstellungsSaal);
+            FSK = checkFSK(vorstellungsTimeslot, vorstellungsFilm);
+            laufzeiten = checkLaufzeiten(vorstellungsFilm, vorstellungsTimeslot);
+            werbefilme = checkWerbefilmeLaufzeit(vorstellungsTimeslot, vorstellungsFilm, werbungen, werbezeitMax);
+        }
     }
 
-
-
-
-    //Check Methoden hier
-
-    //Check 3D
+    //Check Methoden
     private boolean check3D(Kinofilm vorstellungsFilm, Saal vorstellungsSaal) {
 
-        if ((vorstellungsFilm.get3D() == true && vorstellungsSaal.getThreeD() == false) != true) {
-
-
-            //Check Fsk
-                    // checkFSK();
-
-            //Check Spielzeiten
-
-
+        //Wenn der Saal 3D-Fähig ist, immer True
+        if (vorstellungsSaal.getThreeD())
             return true;
-        } else {
-            return false;
-        }
-    }
 
-
-
-    private boolean checkFSK(Spielzeiten timeslot, Kinofilm vorstellungsFilm) {
-
-        if(timeslot == Spielzeiten.SLOT_1500 && vorstellungsFilm.getFsk() == Fsk.FSK_16) {
-            return false;
-        }else if (timeslot == Spielzeiten.SLOT_1500 && vorstellungsFilm.getFsk() == Fsk.FSK_18){
-            return false;
-        }else if (timeslot == Spielzeiten.SLOT_1730 && vorstellungsFilm.getFsk() == Fsk.FSK_16) {
-            return false;
-        }else if (timeslot == Spielzeiten.SLOT_1730 && vorstellungsFilm.getFsk() == Fsk.FSK_18) {
-            return false;
-        }else if (timeslot == Spielzeiten.SLOT_2000 && vorstellungsFilm.getFsk() == Fsk.FSK_18) {
-            return false;
-        }else {
+        //Wenn Saal 2D und der Film auch
+        if (!vorstellungsFilm.getThreeD() && !vorstellungsSaal.getThreeD())
             return true;
+
+        else { return false; }
+    }
+
+    //Check FSK
+    private boolean checkFSK(Spielzeiten vorstellungsTimeslot, Kinofilm vorstellungsFilm) {
+
+        // Um 15 Uhr und um 17:30 dürfen keine FSK16 und FSK18 Filme gezeigt werden
+        if ((vorstellungsTimeslot == Spielzeiten.SLOT_1500 || vorstellungsTimeslot == Spielzeiten.SLOT_1730) &&
+                (vorstellungsFilm.getFsk() == Fsk.FSK_16 || vorstellungsFilm.getFsk() == Fsk.FSK_18)){
+            return false;}
+
+        // Um 20:00 dürfen keine FSK18 Filme gezeigt werden
+        else if (vorstellungsTimeslot == Spielzeiten.SLOT_2000 && vorstellungsFilm.getFsk() == Fsk.FSK_18){
+            return false;}
+
+        // Alle anderen Kombinationen sind gültig
+        else { return true; }
+    }
+
+    //Check Laufzeiten
+    private boolean checkLaufzeiten(Kinofilm vorstellungsFilm, Spielzeiten vorstellungsTimeslot) {
+        if (vorstellungsTimeslot.getSlotDuration() < vorstellungsFilm.getLaufzeit()) {return false;}
+        else {return true;}
+    }
+
+    //Check Werbefilme // TODO: Werbefilme so sortieren, dass zuerst die Kombinationen mit dem Höchstern Betrag / Zuschauer gewählt werden.
+    private boolean checkWerbefilmeLaufzeit(Spielzeiten vorstellungsTimeslot,
+                                            Kinofilm vorstellungsFilm,
+                                            Werbefilm[] werbungen,
+                                            int werbezeitMax){
+
+        int sumWerbungDuration = 0;
+        for (Werbefilm w: werbungen) { // TODO: Über Intstream?
+            sumWerbungDuration += w.getLaufzeit();
         }
 
-        //(vorstellungsFilm.3D = true + vorstellungsSaal.3D = false) = false
-
-
-
-
-        //Ende Check Methoden
-
-
-
-
-
+        /* Wenn die Summe der Werbezeiten größer ist, als die verbleibende Zeit im Timeslot abzüglich des Hauptfilms
+            oder der Werbeblock länger als 20min ist return: false*/
+        if ((sumWerbungDuration > (vorstellungsTimeslot.getSlotDuration()- vorstellungsFilm.getLaufzeit())) ||
+                (sumWerbungDuration > werbezeitMax)) {return false;}
+        else {return true;}
     }
 
-
-
-
-    //get-Methoden
-//    public Kinofilm getKinofilm(){
-//        return vorstellungsFilm;
-//    }
-//    public int getSaal(){
-//        return vorstellungsSaal;
-//    }
-//    public Spielzeiten getSpielzeiten(){
-//        return timeslot;
-//    }
-//    public Werbefilm[] getWerbefilme(){
-//        return werbungen;
-//        //eventuell Liste/Collection, weil wir nicht wissen, wie viele Werbefilme
-//    }
-
-    //check-Methoden for Constructor
-
-
-        /* () Film- und ein Saalobjekt
-         * film.3D = 3D-Eigenschaft des Films, film.3D==saal.3D mit if-Funktion */
-    /*Code
-        IF Spalte 3D aus saele.csv = false, dann dürfen in den jeweiligen Sälen nur Kinofilme aus filme.csv mit
-        Spalte 3D = false gezeigt werden, sonst ist es egal
-
+    //Getter
+    public Kinofilm getKinofilm(){
+        return vorstellungsFilm;
     }
- */
-        /*Code
-        FSK 0,6,12,16,18
-        FSK 16 nur um 20 oder 23 Uhr
-        FSK 18 nur um 23 Uhr
-        siehe check3D, FSK vergleichen über Enumeration Spielzeiten
-
-        return false;  */
-
-    private boolean checkLaufzeiten()
-    {
-
-        /*Code
-        Timeslot - Kinofilm = x
-        Timeslot>=Kinofilm
-        IF x <= 20 min, dann x, sonst <= 20 min --> das muss in den Konstruktor
-        IF 120 <= Kinofilm <= 160, dann muss er um 20 Uhr laufen --> das muss in den Konstruktor
-
-        IF Kinofilm < 160, dann fällt er komplett raus
-        über die Grenzen müssen wir noch sprechen, worauf legen wir uns fest?
-         */
-        return false;
+    public Saal getSaal(){
+        return vorstellungsSaal;
     }
-
+    public Spielzeiten getSpielzeiten(){
+        return vorstellungsTimeslot;
+    }
+    public Werbefilm[] getWerbefilme(){
+        return werbungen;
+    } // TODO: Festlegung der Anzahl der Webefilmelemente wo?
 
 }

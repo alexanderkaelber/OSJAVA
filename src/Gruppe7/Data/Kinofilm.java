@@ -40,7 +40,7 @@ public class Kinofilm extends Film
     }
 
     // Getter
-    public boolean get3D()
+    public boolean getThreeD()
     {
         return threeD;
     }

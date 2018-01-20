@@ -13,8 +13,6 @@ public class SaalImporter extends Datei {
     private int importPlaetzeLoge;
     private boolean importThreeD;
 
-
-
     /**
      * Konstruktor fuer Objekte der Klasse Datei
      * Legt einen String mit dem Namen der zu bearbeitenden Datei an.
@@ -27,7 +25,7 @@ public class SaalImporter extends Datei {
         importFileSaele = new Datei(in_name);
         importFileSaele.openInFile_FS();
 
-        while (importFileSaele.eof()==false){
+        while (!importFileSaele.eof()){
             importString = importFileSaele.readLine_FS();
             if (importString != null){
                 System.out.println("Import String:"  +importString+ "\naus Importdatei " +in_name );
@@ -42,12 +40,6 @@ public class SaalImporter extends Datei {
                 SaalVerwaltung.setSaele(new Saal(importPlaetzeLoge, importPlaetzeParkett, importThreeD, importSaalNr));
 
             }
-
         }
-
-
-
-
-
     }
 }

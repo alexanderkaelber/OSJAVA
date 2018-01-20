@@ -11,8 +11,6 @@ public class WerbefilmImporter extends Datei {
     private int importWerbespotEinnahmenen;
     private int importWerbespotLaufzeit;
 
-
-
     /**
      * Konstruktor fuer Objekte der Klasse Datei
      * Legt einen String mit dem Namen der zu bearbeitenden Datei an.
@@ -25,7 +23,7 @@ public class WerbefilmImporter extends Datei {
         importFileWerbespots = new Datei(in_name);
         importFileWerbespots.openInFile_FS();
 
-        while (importFileWerbespots.eof()==false){
+        while (!importFileWerbespots.eof()){
             importString = importFileWerbespots.readLine_FS();
             if (importString != null){
                 System.out.println("Import String:"  +importString+ "\naus Importdatei " +in_name );
@@ -38,14 +36,7 @@ public class WerbefilmImporter extends Datei {
 
 
                 WerbefilmVerwaltung.setWerbefilme(new Werbefilm(importWerbespotBezeichnung, importWerbespotLaufzeit, importWerbespotEinnahmenen));
-
             }
-
         }
-
-
-
-
-
     }
 }

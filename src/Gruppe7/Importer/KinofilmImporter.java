@@ -15,7 +15,6 @@ public class KinofilmImporter extends Datei {
     private int importKinofilmFskInt;
     private Fsk importKinofilmFSK;
 
-
     private String importKinofilmGemresString;
     private ArrayList<Genre> importKinofilmGenres;
 
@@ -44,7 +43,7 @@ public class KinofilmImporter extends Datei {
         System.out.println("Import String:"  +importString+ "\naus Importdatei " +in_name );
 
         //Schleife läuft bis zum Ende der Datei.
-        while (importFileKinofilme.eof() == false) {
+        while (!importFileKinofilme.eof()) {
 
             //Jede Zeile wird in importString eingelesen, es sei denn, in der letzten Zeile steht nichts drin.
             importString = importFileKinofilme.readLine_FS();
@@ -87,7 +86,7 @@ public class KinofilmImporter extends Datei {
                 //Genres Auslesen und Zuweisen
                 //Für jeden Durchgang muss eine neue Liste erstellt werden.
                 //Es wird eine ArrayList benötigt, da ein Film mehrere Genres haben kann.
-                importKinofilmGenres = new ArrayList<Genre>();
+                importKinofilmGenres = new ArrayList<>();
 
                 //Erstellung eines String mit allen Genres
                 importKinofilmGemresString = String.valueOf(arrayKinofilm[3]);
@@ -103,36 +102,39 @@ public class KinofilmImporter extends Datei {
                     //Ausgabe aller Genres
                     System.out.println(arrayGenre[i]);
                 }
+
                 //Die ausgelesenen Genres werden gepfrüft und eindeutigen Enums zugewiesen.
-                for (int i = 0; i < arrayGenre.length; i++) {
-                    if (arrayGenre[i].trim().equals("Action")) {
+                for (String inputGenre: arrayGenre)
+                {
+                    if (inputGenre.trim().equals("Action")) {
                         importKinofilmGenres.add(Genre.ACTION);
                     }
-                    if (arrayGenre[i].trim().equals("Dokumentation")) {
+                    if (inputGenre.trim().equals("Dokumentation")) {
                         importKinofilmGenres.add(Genre.DOKUMENTATION);
                     }
-                    if (arrayGenre[i].trim().equals("Drama")) {
+                    if (inputGenre.trim().equals("Drama")) {
                         importKinofilmGenres.add(Genre.ACTION);
                     }
-                    if (arrayGenre[i].trim().equals("Horror")) {
+                    if (inputGenre.trim().equals("Horror")) {
                         importKinofilmGenres.add(Genre.HORROR);
                     }
-                    if (arrayGenre[i].trim().equals("Komödie")) {
+                    if (inputGenre.trim().equals("Komödie")) {
                         importKinofilmGenres.add(Genre.KOMOEDIE);
                     }
-                    if (arrayGenre[i].trim().equals("Krimi")) {
+                    if (inputGenre.trim().equals("Krimi")) {
                         importKinofilmGenres.add(Genre.KRIMI);
                     }
-                    if (arrayGenre[i].trim().equals("Science Fiction")) {
+                    if (inputGenre.trim().equals("Science Fiction")) {
                         importKinofilmGenres.add(Genre.SCIENCE_FICTION);
                     }
-                    if (arrayGenre[i].trim().equals("Zeichentrick")) {
+                    if (inputGenre.trim().equals("Zeichentrick")) {
                         importKinofilmGenres.add(Genre.ZEICHENTRICK);
                     }
-                    if (arrayGenre[i].trim().equals("Thriller")) {
+                    if (inputGenre.trim().equals("Thriller")) {
                         importKinofilmGenres.add(Genre.THRILLER);
                     }
                 }
+
                 //Ausgabe Genres pro Film
                 System.out.println(importKinofilmGenres.size());
             }
@@ -152,18 +154,8 @@ public class KinofilmImporter extends Datei {
 
             FilmVerwaltung.setFilme(new Kinofilm (importKinofilmTitel, importKinofilmLaufzeit, importThreeD, importKinofilmSprache, importKinofilmRegisseur, importKinofilmErscheinungsjahr, importKinofilmErscheinungsland, importKinofilmBeliebtheit, importKinofilmMietpreis, importKinofilmFSK, importKinofilmGenres));
         }
-
-
-
-
     }
 }
-
-
-
-
-
-
                 //ArrayList<Genre> TODO weiteres Array auslesen.
                 // importKinofilmGemrsString
 
