@@ -1,4 +1,3 @@
-/*
 package Gruppe7.Logic;
 
 import java.util.ArrayList;
@@ -27,7 +26,7 @@ public class Planer
         // Für 21 Tage
         for (int i = 0; i < 21; i++)
         {
-            // Für jeden Saal
+            // Für jeden SaalK
             for (int j = SaalVerwaltung.getSize(); i > 0; i--)
             {
                 // Für jeden Timeslot
@@ -88,7 +87,4 @@ public class Planer
         //Code
         return null;
     }
-
-
 }
-*/
