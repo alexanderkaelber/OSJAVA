@@ -5,6 +5,7 @@ import java.util.Random;
 import Gruppe7.Data.*;
 import Gruppe7.Importer.Datei;
 import Gruppe7.Importer.SaalImporter;
+import Gruppe7.Importer.WerbefilmImporter;
 import Gruppe7.Importer.readCSV;
 
 public class Main {
@@ -20,30 +21,13 @@ public class Main {
 
 
 //Import Test
-       //Datei testImport;
-       //testImport = new Datei("C:/import/saele.csv");
-       //testImport.openInFile_FS();
-       //testImport.readLine_FS();
-       //testImport.readLine();
+
 
 
         new SaalImporter("C:/import/saele.csv");
 
 
-        /*System.out.println(testImport.readLine());
-        System.out.println(testImport.readLine());
-        System.out.println(testImport.readLine());
-        System.out.println(testImport.readLine());
-        System.out.println(testImport.readLine());
-        System.out.println(testImport.readLine());
-        System.out.println(testImport.readLine());
-        System.out.println(testImport.readLine());
-        System.out.println(testImport.readLine());*/
-
-
-
-      // System.out.println(testImport.);
-
+        new WerbefilmImporter("C:/importer/werbespots.csv");
 
 
             }
