@@ -12,7 +12,7 @@ public class Planer
 
     public Planer()
     {
-        randomSpielplan = Spielplan.GetRandomSpielplan();
+    //    randomSpielplan = Spielplan.GetRandomSpielplan();
     }
 
     public void Improve()
