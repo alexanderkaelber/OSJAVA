@@ -13,12 +13,7 @@ public class Main {
 	// Main Method
 
 
-            }
-        }
-
-
-
-
+    }
 
 //    void startPlaner()
 //    {
@@ -38,4 +33,4 @@ public class Main {
 
 
 
-
+}

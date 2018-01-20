@@ -1,4 +1,6 @@
 package Gruppe7.Data;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class Kinofilm extends Film
 {
@@ -9,7 +11,7 @@ public class Kinofilm extends Film
     private int beliebtheit;
     private int verleihpreisProWoche;
     private Fsk fsk;
-    private Genre genre;
+    private ArrayList<Genre> genre = new ArrayList<>();
 
     public Kinofilm(
             String in_titel,
@@ -21,7 +23,7 @@ public class Kinofilm extends Film
             int in_beliebtheit,
             int in_verleipreis,
             Fsk in_fsk,
-            Genre in_genre)
+            ArrayList<Genre> in_genre)
     {
         super(in_titel, in_laufzeit);
         threeD = in_threeD;
@@ -70,7 +72,7 @@ public class Kinofilm extends Film
       return fsk;
     }
 
-    public Genre getGenre()
+    public ArrayList<Genre> getGenre()
     {
        return genre;
     }
