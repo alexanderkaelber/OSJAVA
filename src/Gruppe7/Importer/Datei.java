@@ -18,7 +18,7 @@ import java.io.*;
  * @author  Patrick Veith et al.
  * @version 2.1 on 11.10.2012
  */
-public abstract class Datei
+public class Datei
 {
     // Attribute der Klasse Datei
     // Name der Datei
