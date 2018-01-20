@@ -4,14 +4,9 @@ import java.util.ArrayList;
 
 public class FilmVerwaltung
 {
-    ArrayList<Kinofilm> filme = new ArrayList<>();
+    static ArrayList<Kinofilm> filme = new ArrayList<>();
 
-    public FilmVerwaltung()
-    {
-        //Constructor
-    }
-
-    public ArrayList<Kinofilm> getFilme() {
+    static  ArrayList<Kinofilm> getFilme() {
         return filme;
     }
 }
