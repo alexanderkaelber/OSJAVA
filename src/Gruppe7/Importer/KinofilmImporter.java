@@ -38,7 +38,6 @@ public class KinofilmImporter extends Datei {
 
         importFileKinofilme = new Datei(in_name);
         importFileKinofilme.openInFile_FS();
-        System.out.println("Import String:"  +importString+ "\naus Importdatei " +in_name );
 
         //Schleife läuft bis zum Ende der Datei.
         while (true) {
@@ -81,7 +80,7 @@ public class KinofilmImporter extends Datei {
                     importKinofilmFSK = Fsk.FSK_0;
                 }
                 //Test ob FSK Zusweisung erfolgreich war.
-                System.out.println("FSK Enum gesetzt: " + importKinofilmFSK);
+                System.out.println("FSK: " + importKinofilmFSK);
 
 
                 //Genres Auslesen und Zuweisen
@@ -94,14 +93,13 @@ public class KinofilmImporter extends Datei {
 
                 //Ausgabe des Strings
                 System.out.println("String Genres:" + importKinofilmGemresString);
+                System.out.println("--------------------------");
 
                 //Der String wird aufgeteilt
                 String arrayGenre[] = importKinofilmGemresString.split(",");
                 for (int i = 0; i < arrayGenre.length; i++) {
                     //Leerzeichen entfernen
                     arrayGenre[i] = arrayGenre[i].trim();
-                    //Ausgabe aller Genres
-                    System.out.println(arrayGenre[i]);
                 }
 
                 //Die ausgelesenen Genres werden gepfrüft und eindeutigen Enums zugewiesen.
@@ -136,11 +134,9 @@ public class KinofilmImporter extends Datei {
                     }
                 }
 
-                //Ausgabe Genres pro Film
-                System.out.println(importKinofilmGenres.size());
             }
             importKinofilmMietpreis = Integer.valueOf(arrayKinofilm[4]);
-            System.out.println(importKinofilmMietpreis);
+                System.out.println("Mietpreis" + importKinofilmMietpreis);
             importKinofilmBeliebtheit = Integer.valueOf(arrayKinofilm[5]);
             importKinofilmLaufzeit = Integer.valueOf(arrayKinofilm[6]);
             importKinofilmSprache = String.valueOf(arrayKinofilm[7]);
