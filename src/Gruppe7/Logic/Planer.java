@@ -1,96 +1,26 @@
 package Gruppe7.Logic;
 
-import java.util.ArrayList;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
-
 import Gruppe7.Data.*;
 
 public class Planer
 {
-    // Arraylisten die je einen Spielplan enthalten
-    private ArrayList<Vorstellung> randomSpielplan = new ArrayList<Vorstellung>(
 
-<<<<<<< HEAD
-            //Initialerstellung des Plans bei Konstruktorcall
-            // Vorstellung[21][Saal.Length][4];
-    );
-    private ArrayList<Vorstellung> improvedSpielplan = new ArrayList<Vorstellung>();
-=======
     // Arraylisten die je einen Spielplan enthalten. Dreidimensionale Arrays.
     private Vorstellung[][][] randomSpielplan = new Vorstellung[21][4][SaalVerwaltung.getSize()];
     private Vorstellung[][][] improvedSpielplan = new Vorstellung[21][4][SaalVerwaltung.getSize()];
->>>>>>> 828efd1... Kinofil -> Genre Arraylist hinzugefügt
 
     public Planer()
     {
-        //Constructor
+        randomSpielplan = Spielplan.GetRandomSpielplan();
     }
 
-    // Erstellt einen zufälligen Spielplan
-    public void CreateRandomSpielplan()
+    public void Improve()
     {
-        // Für 21 Tage
-        for (int i = 0; i < 21; i++)
-        {
-            // Für jeden SaalK
-            for (int j = SaalVerwaltung.getSize(); i > 0; i--)
-            {
-                // Für jeden Timeslot
-                for (int k = 4; i > 0; i++)
-                {
-                    //randomSpielplan.add(new Vorstellung()); // TODO: Vorstellungsklasse muss abgeändert werden. Keine Paramter.
-                }
-            }
-        }
+        int randomVorstellungIndex = ThreadLocalRandom.current().nextInt(0, randomSpielplan.length);
     }
 
-    // TODO: Vorstellungen werden bei Nicole erstellt.
-//    private Vorstellung createVorstellung()
-//    {
-//        Kinofilm kinofilm;
-//        Werbefilm werbefilm;
-//        Saal saal;
-//
-//
-//        int KinofilmIndex = ThreadLocalRandom.current().nextInt(0, FilmVerwaltung.getSize());
-//        int WerbefilmIndex = ThreadLocalRandom.current().nextInt(0, WerbefilmVerwaltung.getSize());
-//        int SaalIndex = ThreadLocalRandom.current().nextInt(0, SaalVerwaltung.getSize());
-//        int eintritt = 7; // TODO: Eintritt variabel gestalten.
-//
-//        return new Vorstellung(FilmVerwaltung.getFilme().get(KinofilmIndex),
-//                                WerbefilmVerwaltung.getWerbefilme().get(WerbefilmIndex),
-//                                SaalVerwaltung.getSaele().get(SaalIndex),
-//                                , int);
-//    }
-
-
-    private boolean checkGenre()
-    {
-        //Temporäre GenreVariable zur Prüfung
-//        for (Genre g: Genre)
-//        {
-//            // TODO: Enumerable Collection gebruacht
-//        }
-
-
-        // TODO: Ist jedes Genre im randomSpielplan einmal vertreten?
-        for( Vorstellung l: randomSpielplan)
-        {
-
-        }
-
-        return false;
-    }
-
-    public Spielplan Improve()
-    {
-        //Code
-        return null;
-    }
-
-    public Spielplan getImprovedSpielplan()
-    {
-        //Code
-        return null;
-    }
+    // Getter
+    public Vorstellung[][][] getImprovedSpielplan() { return improvedSpielplan; }
 }
