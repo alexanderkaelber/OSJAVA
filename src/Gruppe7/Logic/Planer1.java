@@ -28,7 +28,7 @@ public class Planer
         Saal saal;
         int eintritt;
 
-        int randomIndexKinofilm = ThreadLocalRandom.current().nextInt(0, W
+        int randomIndexKinofilm = ThreadLocalRandom.current().nextInt(0, FilmVerwaltung.filme.length())
         kinofilm =
     }
 
