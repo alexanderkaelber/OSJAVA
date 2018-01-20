@@ -140,7 +140,10 @@ public class KinofilmImporter extends Datei {
             importKinofilmBeliebtheit = Integer.valueOf(arrayKinofilm[5]);
             importKinofilmLaufzeit = Integer.valueOf(arrayKinofilm[6]);
             importKinofilmSprache = String.valueOf(arrayKinofilm[7]);
-            importKinofilmErscheinungsland
+            importKinofilmErscheinungsland=String.valueOf(arrayKinofilm[8]);
+            importKinofilmErscheinungsjahr=Integer.valueOf(arrayKinofilm[9]);
+            importThreeD=Boolean.valueOf(arrayKinofilm[10]);
+
         }
 
 
