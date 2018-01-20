@@ -41,19 +41,28 @@ public class KinofilmImporter extends Datei {
 
         importFileKinofilme = new Datei(in_name);
         importFileKinofilme.openInFile_FS();
-        //System.out.println("Import String:"  +importString+ "\naus Importdatei " +in_name );
+        System.out.println("Import String:"  +importString+ "\naus Importdatei " +in_name );
 
-
+        //Schleife läuft bis zum Ende der Datei.
         while (importFileKinofilme.eof() == false) {
+
+            //Jede Zeile wird in importString eingelesen, es sei denn, in der letzten Zeile steht nichts drin.
             importString = importFileKinofilme.readLine_FS();
             if (importString != null) {
                 System.out.println("Import String: " + importString + "\naus Importdatei " + in_name);
 
+                //Zerlegt den Import String (Zeile der Datei) und erstellt ein Array.
                 String arrayKinofilm[] = importString.split(";");
 
+                //Die einzelnen Array Positionen werden nachfolgend Variablen der Klasse zugewiesen.
+
+                //Filmtitel
                 importKinofilmTitel = String.valueOf(arrayKinofilm[0]);
+                //Regieseuer
                 importKinofilmRegisseur = String.valueOf(arrayKinofilm[1]);
 
+                //FSK des aktuellen Films
+                //Hier wird der int Wert der FSK ausgewertet und dafür eine Enumeration gesetzt.
                 importKinofilmFskInt = Integer.valueOf(arrayKinofilm[2]);
                 if (importKinofilmFskInt == 18) {
                     importKinofilmFSK = Fsk.FSK_18;
@@ -70,27 +79,33 @@ public class KinofilmImporter extends Datei {
                 if (importKinofilmFskInt == 0) {
                     importKinofilmFSK = Fsk.FSK_0;
                 }
+                //Test ob FSK Zusweisung erfolgreich war.
                 System.out.println("FSK Enum gesetzt: " + importKinofilmFSK);
+
+
 
                 //Genres Auslesen und Zuweisen
                 //Für jeden Durchgang muss eine neue Liste erstellt werden.
+                //Es wird eine ArrayList benötigt, da ein Film mehrere Genres haben kann.
                 importKinofilmGenres = new ArrayList<Genre>();
 
+                //Erstellung eines String mit allen Genres
                 importKinofilmGemresString = String.valueOf(arrayKinofilm[3]);
-                importKinofilmGemresString = importKinofilmGemresString;
+
+                //Ausgabe des Strings
                 System.out.println("String Genres:" + importKinofilmGemresString);
 
+                //Der String wird aufgeteilt
                 String arrayGenre[] = importKinofilmGemresString.split(",");
                 for (int i = 0; i < arrayGenre.length; i++) {
-
-                    arrayGenre[i] = arrayGenre[i].trim(); //Leerzeichen entfernen
-
-                    //arrayGenre[i]=arrayGenre[i].replaceAll("\\s", "");
+                    //Leerzeichen entfernen
+                    arrayGenre[i] = arrayGenre[i].trim();
+                    //Ausgabe aller Genres
                     System.out.println(arrayGenre[i]);
 
                 }
 
-
+                //Die ausgelesenen Genres werden gepfrüft und eindeutigen Enums zugewiesen.
                 for (int i = 0; i < arrayGenre.length; i++) {
                     if (arrayGenre[i].trim().equals("Action")) {
                         importKinofilmGenres.add(Genre.ACTION);
@@ -119,9 +134,8 @@ public class KinofilmImporter extends Datei {
                     if (arrayGenre[i].trim().equals("Thriller")) {
                         importKinofilmGenres.add(Genre.THRILLER);
                     }
-
-
                 }
+                //Ausgabe Genres pro Film
                 System.out.println(importKinofilmGenres.size());
             }
 
