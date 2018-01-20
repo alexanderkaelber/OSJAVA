@@ -63,8 +63,18 @@ public class Vorstellung
 
     private boolean checkFSK(Spielzeiten timeslot, Kinofilm vorstellungsFilm) {
 
-        if(vorstellungsFilm.getFsk()){
-        return true;
+        if(timeslot == Spielzeiten.SLOT_1500 && vorstellungsFilm.getFsk() == Fsk.FSK_16) {
+            return false;
+        }else if (timeslot == Spielzeiten.SLOT_1500 && vorstellungsFilm.getFsk() == Fsk.FSK_18){
+            return false;
+        }else if (timeslot == Spielzeiten.SLOT_1730 && vorstellungsFilm.getFsk() == Fsk.FSK_16) {
+            return false;
+        }else if (timeslot == Spielzeiten.SLOT_1730 && vorstellungsFilm.getFsk() == Fsk.FSK_18) {
+            return false;
+        }else if (timeslot == Spielzeiten.SLOT_2000 && vorstellungsFilm.getFsk() == Fsk.FSK_18) {
+            return false;
+        }else {
+            return true;
         }
 
         //(vorstellungsFilm.3D = true + vorstellungsSaal.3D = false) = false
