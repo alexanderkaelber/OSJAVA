@@ -13,7 +13,7 @@ public class Werbefilm extends Film
         System.out.println("  Klasse Werbefilm Bezeichnung: " + this.getTitel());
         System.out.println("  Klasse Werbefilm Einnahmen: "+ umsatzProZuschauer);
         System.out.println("  Klasse Lauzeit in min: "+this.getLaufzeit());
-        System.out.println("--------------------------------------");
+        System.out.println("--------------------------------------------------");
     }
 
     //Getter
