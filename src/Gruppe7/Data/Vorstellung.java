@@ -1,5 +1,7 @@
 package Gruppe7.Data;
 
+import java.util.stream.IntStream;
+
 public class Vorstellung {
 
     //Attribute
@@ -62,24 +64,20 @@ public class Vorstellung {
         else {return true;}
     }
 
-    //Check Werbefilme
+    //Check Werbefilme // TODO: Werbefilme so sortieren, dass zuerst die Kombinationen mit dem Höchstern Betrag / Zuschauer gewählt werden.
     private boolean checkWerbefilmeLaufzeit(Spielzeiten vorstellungsTimeslot,
                                             Kinofilm vorstellungsFilm,
                                             Werbefilm[] werbungen,
                                             int werbezeitMax){
-        if((Spielzeiten.SLOT_1500.getSlotDuration() - vorstellungsFilm.getLaufzeit()) > werbezeitMax) {
-            return false;
 
-        }else if((Spielzeiten.SLOT_1730.getSlotDuration() - vorstellungsFilm.getLaufzeit()) > werbezeitMax){
-            return false;
-        }else if((Spielzeiten.SLOT_2000.getSlotDuration() - vorstellungsFilm.getLaufzeit()) > werbezeitMax){
-            return false;
-        }else if((Spielzeiten.SLOT_2300.getSlotDuration() - vorstellungsFilm.getLaufzeit()) > werbezeitMax){
-            return false;
-        }else {
-            return true; //(int (Spielzeiten.SLOT_1500.getSlotDuration() - vorstellungsFilm.getLaufzeit()));
-
+        int sumWerbungDuration = 0;
+        for (Werbefilm w: werbungen) { // TODO: Über Intstream?
+            sumWerbungDuration += w.getLaufzeit();
         }
+
+        if ((sumWerbungDuration > vorstellungsTimeslot.getSlotDuration()) || (sumWerbungDuration> 20))
+        {return false;}
+        else { return true; }
     }
 
 
