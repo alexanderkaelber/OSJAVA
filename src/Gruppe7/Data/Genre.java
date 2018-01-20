@@ -10,8 +10,8 @@ package Gruppe7.Data;
         KOMOEDIE("Komödie"),
         KRIMI("Krimi"),
         SCIENCE_FICTION("Science Fiction"),
-        THRILLER("Thriller"),
-        ZEICHENTRICK("Zeichentrick");
+        ZEICHENTRICK("Zeichentrick"),
+        THRILLER("Thriller");
 
 
         private String genereName;
