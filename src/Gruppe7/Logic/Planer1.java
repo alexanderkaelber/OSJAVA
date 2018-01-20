@@ -1,3 +1,4 @@
+/*
 package Gruppe7.Logic;
 
 import java.util.ArrayList;
@@ -74,3 +75,4 @@ public class Planer
 
 
 }
+*/
