@@ -10,4 +10,7 @@ public class WerbefilmVerwaltung
     //Getter
     public static ArrayList<Werbefilm> getWerbefilme() { return werbefilme; }
     public static int getSize() { return werbefilme.size(); }
+
+    //Setter
+    public static void setWerbefilme(Werbefilm in_werbefilm) {werbefilme.add(in_werbefilm);}
 }

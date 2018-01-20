@@ -10,4 +10,7 @@ public class SaalVerwaltung
     // Getter
     public static ArrayList<Saal> getSaele() { return saele; }
     public static int getSize(){return saele.size();}
+
+    //Setter
+    public static void setSaele(Saal in_saal) {saele.add(in_saal);}
 }
