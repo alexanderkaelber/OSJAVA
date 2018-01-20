@@ -48,11 +48,12 @@ public class KinofilmImporter extends Datei {
 
             //Jede Zeile wird in importString eingelesen, es sei denn, in der letzten Zeile steht nichts drin.
             importString = importFileKinofilme.readLine_FS();
+            String[] arrayKinofilm = new String[0];
             if (importString != null) {
                 System.out.println("Import String: " + importString + "\naus Importdatei " + in_name);
 
                 //Zerlegt den Import String (Zeile der Datei) und erstellt ein Array.
-                String arrayKinofilm[] = importString.split(";");
+                arrayKinofilm = importString.split(";");
 
                 //Die einzelnen Array Positionen werden nachfolgend Variablen der Klasse zugewiesen.
 
@@ -83,7 +84,6 @@ public class KinofilmImporter extends Datei {
                 System.out.println("FSK Enum gesetzt: " + importKinofilmFSK);
 
 
-
                 //Genres Auslesen und Zuweisen
                 //Für jeden Durchgang muss eine neue Liste erstellt werden.
                 //Es wird eine ArrayList benötigt, da ein Film mehrere Genres haben kann.
@@ -102,9 +102,7 @@ public class KinofilmImporter extends Datei {
                     arrayGenre[i] = arrayGenre[i].trim();
                     //Ausgabe aller Genres
                     System.out.println(arrayGenre[i]);
-
                 }
-
                 //Die ausgelesenen Genres werden gepfrüft und eindeutigen Enums zugewiesen.
                 for (int i = 0; i < arrayGenre.length; i++) {
                     if (arrayGenre[i].trim().equals("Action")) {
@@ -138,9 +136,13 @@ public class KinofilmImporter extends Datei {
                 //Ausgabe Genres pro Film
                 System.out.println(importKinofilmGenres.size());
             }
-
-
+            importKinofilmMietpreis = Integer.valueOf(arrayKinofilm[4]);
+            importKinofilmBeliebtheit = Integer.valueOf(arrayKinofilm[5]);
+            importKinofilmLaufzeit = Integer.valueOf(arrayKinofilm[6]);
+            importKinofilmSprache = String.valueOf(arrayKinofilm[7]);
+            importKinofilmErscheinungsland
         }
+
 
 
 
