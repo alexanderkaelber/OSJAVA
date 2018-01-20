@@ -2,14 +2,13 @@
 package Gruppe7.Logic;
 
 import java.util.ArrayList;
-import java.util.Random;
-import Gruppe7.Data.Saal;
-import Gruppe7.Data.Spielplan;
-import Gruppe7.Data.Vorstellung;
+import java.util.concurrent.ThreadLocalRandom;
+
+import Gruppe7.Data.*;
 
 public class Planer
 {
-    //Attribute needs some work obviously
+    // Arraylisten die je einen Spielplan enthalten
     private ArrayList<Vorstellung> randomSpielplan = new ArrayList<Vorstellung>(
 
             //Initialerstellung des Plans bei Konstruktorcall
@@ -22,21 +21,28 @@ public class Planer
         //Constructor
     }
 
+    // Erstellt einen zufälligen Spielplan
+    public Spielplan CreateRandomSpielplan()
+    {
+        Kinofilm kinofilm;
+        Werbefilm werbefilm;
+        Saal saal;
+        int eintritt;
+
+        int randomIndexKinofilm = ThreadLocalRandom.current().nextInt(0, W
+        kinofilm =
+    }
+
+
     private void fillPlan(){
         for (int i = 0; i < 21; i++) {
-            Vorstellung newVorstellung = new Vorstellung();
+            Vorstellung newVorstellung = new Vorstellung(kinofilm, werbefilm, saal, eintritt);
 
-            if () //TODO: hier weiter
+            //if () //TODO: hier weiter
         }
     }
 
     private Vorstellung createVorstellung()
-    {
-        //Code
-        return null;
-    }
-
-    public Spielplan CreateRandomSpielplan()
     {
         //Code
         return null;
@@ -70,4 +76,3 @@ public class Planer
 
 }
 */
-

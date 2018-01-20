@@ -4,15 +4,11 @@ import java.util.ArrayList;
 
 public class WerbefilmVerwaltung
 {
-    private ArrayList<Werbefilm> werbefilme = new ArrayList<Werbefilm>();
-
-    public WerbefilmVerwaltung()
-    {
-        //Constructor
-    }
+    // Auf die Verwaltungsklassen muss aus dem gesamten Kode zugegriffen werden
+    static private ArrayList<Werbefilm> werbefilme = new ArrayList<Werbefilm>();
 
     //Getter
-    public ArrayList<Werbefilm> getWerbefilme() {
+    static ArrayList<Werbefilm> getWerbefilme() {
         return werbefilme;
     }
 }
