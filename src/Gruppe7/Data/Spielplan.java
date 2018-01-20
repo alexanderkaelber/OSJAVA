@@ -1,13 +1,18 @@
 package Gruppe7.Data;
+import java.util.ArrayList;
+import java.util.Arrays;
 
-public class Spielplan{}
-/*
-{
-    //Attribute needs some work obviously
-//    private Vorstellung[] vorstellung[21][saal.Length][4];
+public class Spielplan{
 
-    public Spielplan(Vorstellung[] in_alleVorstellungenFuerSpielplan)
+    //Spielplan ist ein Array der Länge 21(Tage) * 4(Spielzeiten) * Anzahl der Säle
+    private Vorstellung[] spielplan = new Vorstellung[21*4*SaalVerwaltung.getSize()];
+
+    public Spielplan()
     {
-        //Constructor
+
     }
-}*/
+
+    public Vorstellung[] getSpielplan() {
+        return spielplan;
+    }
+}
