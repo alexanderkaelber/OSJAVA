@@ -9,13 +9,16 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
     //Datenimport
-//    new SaalImporter("C:/import/saele.csv");
-//    new WerbefilmImporter("C:/import/werbespots.csv");
-    new KinofilmImporter("C:/import/filme.csv");
+    //new SaalImporter("C:/import/saele.csv");
+    //new WerbefilmImporter("C:/import/werbespots.csv");
+    //new KinofilmImporter("C:/import/filme.csv");
 
-//    Planer planer = new Planer();
-//    //planer.Improve();
-//
-//        System.out.println(planer.getRandomSpielplan().toString());
+     new FilterBeliebtheit(50);
+
+
+    //Planer planer = new Planer();
+    //planer.Improve();
+
+      //  System.out.println(planer.getRandomSpielplan().toString());
     }
 }
