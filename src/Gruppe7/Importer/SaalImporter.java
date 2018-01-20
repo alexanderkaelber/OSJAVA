@@ -1,6 +1,9 @@
 package Gruppe7.Importer;
 
 
+import Gruppe7.Data.Saal;
+import Gruppe7.Data.SaalVerwaltung;
+
 public class SaalImporter extends Datei {
 
     private Datei importFileSaele;
@@ -36,7 +39,7 @@ public class SaalImporter extends Datei {
                 importPlaetzeLoge = Integer.valueOf(array[2]);
                 importThreeD = Boolean.valueOf(array[2]);
 
-                
+                SaalVerwaltung.setSaele(new Saal(importPlaetzeLoge, importPlaetzeParkett, importThreeD, importSaalNr));
 
             }
 
