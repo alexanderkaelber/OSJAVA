@@ -12,13 +12,17 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-    //Datenimport
-    new SaalImporter("C:/import/saele.csv");
-    new WerbefilmImporter("C:/import/werbespots.csv");
-    new KinofilmImporter("C:/import/filme.csv");
+        Vorstellung[][][] spielplan;
 
-    Planer planer = new Planer();
-    //planer.Improve();
-    System.out.println(planer.getRandomSpielplan().toString());
+        //Datenimport
+        new SaalImporter("C:/import/saele.csv");
+        new WerbefilmImporter("C:/import/werbespots.csv");
+        new KinofilmImporter("C:/import/filme.csv");
+
+        Planer planer = new Planer();
+        spielplan = planer.getRandomSpielplan();
+        //planer.Improve();
+
+        System.out.println(planer.toString(spielplan));
     }
 }

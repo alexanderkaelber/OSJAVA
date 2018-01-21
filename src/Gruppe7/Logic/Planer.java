@@ -24,8 +24,7 @@ public class Planer
     public Vorstellung[][][] getImprovedSpielplan() { return improvedSpielplan; }
     public Vorstellung[][][] getRandomSpielplan() {return randomSpielplan; }
 
-    @Override
-    public String toString() {
-       return Arrays.deepToString(randomSpielplan);
+    public static String toString(Vorstellung[][][] spielplan) {
+       return Arrays.deepToString(spielplan);
        }
 }

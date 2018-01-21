@@ -106,6 +106,27 @@ public class Vorstellung {
 
     @Override
     public String toString() {
-        return null;
+        String output = "";
+        // Saal
+        output += "Saal: " + vorstellungsSaal.getSaalNummer() + "\n";
+
+        //Uhrzeit
+        output += "Uhrzeit: " + vorstellungsTimeslot + "\n";
+
+        // Film
+        output += "Titel: " + vorstellungsFilm.getTitel()+ "\n" +
+                  "Regisseur: " + vorstellungsFilm.getRegisseur()+ "\n" +
+                  "Laufzeit: " + vorstellungsFilm.getLaufzeit()+ "\n" +
+                  "FSK: " + vorstellungsFilm.getFsk()+ "\n" +
+                  "Genre: " + vorstellungsFilm.getGenre()+ "\n" +
+                  "Sprache: " + vorstellungsFilm.getSprache()+ "\n" +
+                  "Land: " + vorstellungsFilm.getLaufzeit()+ "\n";
+
+        //Financials
+        output += "Beliebtheit: " + vorstellungsFilm.getBeliebtheit() + "\n"+
+                  "Verleihpreis: " + vorstellungsFilm.getVerleihpreisProWoche() + "\n";
+
+        output += "-----------------------------\n";
+        return output;
     }
 }
