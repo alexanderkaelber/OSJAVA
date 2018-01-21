@@ -26,7 +26,7 @@ public class WerbefilmImporter extends Datei {
         while (!importFileWerbespots.eof()){
             importString = importFileWerbespots.readLine_FS();
             if (importString != null){
-                System.out.println("Import String:"  +importString+ "\naus Importdatei " +in_name );
+                //System.out.println("Import String:"  +importString+ "\naus Importdatei " +in_name );
 
                 String arrayWerbung[] = importString.split(";");
 

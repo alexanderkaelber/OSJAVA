@@ -23,4 +23,9 @@ public class Planer
     // Getter
     public Vorstellung[][][] getImprovedSpielplan() { return improvedSpielplan; }
     public Vorstellung[][][] getRandomSpielplan() {return randomSpielplan; }
+
+    @Override
+    public String toString() {
+        return null;
+    }
 }

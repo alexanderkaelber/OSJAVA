@@ -18,7 +18,6 @@ public class Main {
 
     Planer planer = new Planer();
     //planer.Improve();
-
-        System.out.println(planer.getRandomSpielplan());
+    System.out.println(planer.getRandomSpielplan().toString());
     }
 }

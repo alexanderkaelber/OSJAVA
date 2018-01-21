@@ -47,9 +47,8 @@ public class KinofilmImporter extends Datei {
 
             if (importString == null) {break;}
 
-            String[] arrayKinofilm = new String[0];
-            if (importString != null) {
-                System.out.println("Import String: " + importString + "\naus Importdatei " + in_name);
+            String[] arrayKinofilm;
+//                System.out.println("Import String: " + importString + "\naus Importdatei " + in_name);
 
                 //Zerlegt den Import String (Zeile der Datei) und erstellt ein Array.
                 arrayKinofilm = importString.split(";");
@@ -80,7 +79,7 @@ public class KinofilmImporter extends Datei {
                     importKinofilmFSK = Fsk.FSK_0;
                 }
                 //Test ob FSK Zusweisung erfolgreich war.
-                System.out.println("FSK: " + importKinofilmFSK);
+//                System.out.println("FSK: " + importKinofilmFSK);
 
 
                 //Genres Auslesen und Zuweisen
@@ -92,8 +91,8 @@ public class KinofilmImporter extends Datei {
                 importKinofilmGemresString = String.valueOf(arrayKinofilm[3]);
 
                 //Ausgabe des Strings
-                System.out.println("String Genres:" + importKinofilmGemresString);
-                System.out.println("--------------------------");
+//                System.out.println("String Genres:" + importKinofilmGemresString);
+//                System.out.println("--------------------------");
 
                 //Der String wird aufgeteilt
                 String arrayGenre[] = importKinofilmGemresString.split(",");
@@ -131,12 +130,11 @@ public class KinofilmImporter extends Datei {
                     }
                     if (inputGenre.trim().equals("Thriller")) {
                         importKinofilmGenres.add(Genre.THRILLER);
-                    }
                 }
 
             }
             importKinofilmMietpreis = Integer.valueOf(arrayKinofilm[4]);
-                System.out.println("Mietpreis" + importKinofilmMietpreis);
+                //System.out.println("Mietpreis" + importKinofilmMietpreis);
             importKinofilmBeliebtheit = Integer.valueOf(arrayKinofilm[5]);
             importKinofilmLaufzeit = Integer.valueOf(arrayKinofilm[6]);
             importKinofilmSprache = String.valueOf(arrayKinofilm[7]);
