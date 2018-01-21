@@ -13,7 +13,7 @@ public class Spielplan{
     public static Vorstellung[][][] CreateRandomSpielplan() //TODO: hashcode speicher, um sicherzustellen, dass selber spielplan nicht zweimal auftaucht?
     {
         // Für 21 Tage
-        for (int tag = 0; tag < 20; tag++)
+        for (int tag = 0; tag <= 20; tag++)
         {
             // Für jeden Saal
             for (int saal = 0; saal < SaalVerwaltung.getSize()-1; saal++)
@@ -35,7 +35,7 @@ public class Spielplan{
         List<Genre> enumerationList = Arrays.asList(Genre.values());
 
         // Prüfung, ob jedes Genre im Spielplan mindestens einmal vertreten ist.
-        for (int tag = 0; tag < 20; tag++){
+        for (int tag = 0; tag <= 20; tag++){
             for (int saal = 0; saal < SaalVerwaltung.getSize()-1; saal++) {
                 for (int vorstellung = 0; vorstellung < 4; vorstellung++) {
                     if (enumerationList.contains(spielplan[tag][saal][vorstellung].getKinofilm().getGenre())) {
