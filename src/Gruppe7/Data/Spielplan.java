@@ -35,9 +35,9 @@ public class Spielplan{
         List<Genre> enumerationList = Arrays.asList(Genre.values());
 
         // Prüfung, ob jedes Genre im Spielplan mindestens einmal vertreten ist.
-        for (int tag = 0; tag < 21; tag++) {
-            for (int saal = SaalVerwaltung.getSize(); saal > 0; tag--) {
-                for (int vorstellung = 4; vorstellung > 0; tag++) {
+        for (int tag = 0; tag < 20; tag++){
+            for (int saal = 0; saal < SaalVerwaltung.getSize()-1; saal++) {
+                for (int vorstellung = 0; vorstellung < 4; vorstellung++) {
                     if (enumerationList.contains(spielplan[tag][saal][vorstellung].getKinofilm().getGenre())) {
                         enumerationList.remove(spielplan[tag][saal][vorstellung].getKinofilm().getGenre());
                     }

@@ -13,10 +13,10 @@ public class Vorstellung {
     private int eintrittspreis = 7; // TODO: Hardcoded
 
     // Constant
-    public static final int werbezeitMax = 20;
+    private static final int werbezeitMax = 20;
 
     //Constructor
-    public Vorstellung()
+    Vorstellung()
     {
         //Boolean Check Variablen
         boolean threeD = false;
@@ -53,10 +53,7 @@ public class Vorstellung {
             return true;
 
         //Wenn Saal 2D und der Film auch
-        if (!vorstellungsFilm.getThreeD() && !vorstellungsSaal.getThreeD())
-            return true;
-
-        else { return false; }
+        return !vorstellungsFilm.getThreeD() && !vorstellungsSaal.getThreeD();
     }
 
     //Check FSK
@@ -68,17 +65,12 @@ public class Vorstellung {
             return false;}
 
         // Um 20:00 dürfen keine FSK18 Filme gezeigt werden
-        else if (vorstellungsTimeslot == Spielzeiten.SLOT_2000 && vorstellungsFilm.getFsk() == Fsk.FSK_18){
-            return false;}
-
-        // Alle anderen Kombinationen sind gültig
-        else { return true; }
+        else return vorstellungsTimeslot != Spielzeiten.SLOT_2000 || vorstellungsFilm.getFsk() != Fsk.FSK_18;
     }
 
     //Check Laufzeiten
     private boolean checkLaufzeiten(Kinofilm vorstellungsFilm, Spielzeiten vorstellungsTimeslot) {
-        if (vorstellungsTimeslot.getSlotDuration() < vorstellungsFilm.getLaufzeit()) {return false;}
-        else {return true;}
+        return vorstellungsTimeslot.getSlotDuration() >= vorstellungsFilm.getLaufzeit();
     }
 
     //Check Werbefilme // TODO: Werbefilme so sortieren, dass zuerst die Kombinationen mit dem Höchstern Betrag / Zuschauer gewählt werden.
@@ -94,13 +86,12 @@ public class Vorstellung {
 
         /* Wenn die Summe der Werbezeiten größer ist, als die verbleibende Zeit im Timeslot abzüglich des Hauptfilms
             oder der Werbeblock länger als 20min ist return: false*/
-        if ((sumWerbungDuration > (vorstellungsTimeslot.getSlotDuration()- vorstellungsFilm.getLaufzeit())) ||
-                (sumWerbungDuration > werbezeitMax)) {return false;}
-        else {return true;}
+        return (sumWerbungDuration <= (vorstellungsTimeslot.getSlotDuration() - vorstellungsFilm.getLaufzeit())) &&
+                (sumWerbungDuration <= werbezeitMax);
     }
 
     //Getter
-    public Kinofilm getKinofilm(){
+    Kinofilm getKinofilm(){
         return vorstellungsFilm;
     }
     public Saal getSaal(){
