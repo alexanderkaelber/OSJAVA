@@ -7,11 +7,24 @@ public class Spielplan{
     //Constant
     static final int gesamtZahlVorstellungen = 21 * SaalVerwaltung.getSize() * 4;
 
-    //Spielplan ist ein Array der Länge 21(Tage) * 4(Spielzeiten) * Anzahl der Säle
-    private static Vorstellung[][][] spielplan = new Vorstellung[21][SaalVerwaltung.getSize()][4];
+    /**
+     * Konstruktor erstellt einen zufälligen Spielplan
+     */
+    public Spielplan(){
+        spielplan = CreateRandomSpielplan();
+    }
 
-    int einnahmen = 0;
-    public static Vorstellung[][][] CreateRandomSpielplan() //TODO: hashcode speicher, um sicherzustellen, dass selber spielplan nicht zweimal auftaucht?
+    //Spielplan ist ein Array der Länge 21(Tage) * Anzahl der Säle *  4(Spielzeiten)
+    private Vorstellung[][][] spielplan = new Vorstellung[21][SaalVerwaltung.getSize()][4];
+    private int spielplaneinnahmen = 0;
+    private int spielplanAusgaben = 0;
+    private int einnahmen = 0;
+
+    /**
+     * Erstellung eines zufälligen Spielplans durch Iteration durch das leere Vorstellungs-Array
+     * @return Ein dreidimensionales Vorstellungsarray [tag][saal][timeslot]
+     */
+    public Vorstellung[][][] CreateRandomSpielplan()
     {
         // Für 21 Tage
         for (int tagIndex = 0; tagIndex <= 20; tagIndex++)
@@ -23,12 +36,31 @@ public class Spielplan{
                 for (int vorstellungIndex = 0; vorstellungIndex < 4; vorstellungIndex++)
                 {
                     spielplan[tagIndex][saalIndex][vorstellungIndex] = new Vorstellung(); //TODO: Bei constructor call vorstelung und Spielzeit übergeben
-                    System.out.println(Planer.Andrang(spielplan[tagIndex][saalIndex][vorstellungIndex], tagIndex, vorstellungIndex));
                 }
             }
         }
         return spielplan;
     }
+
+    private int spielplanEinnahmen(){
+        spielplaneinnahmen += spielplan[tagIndex][saalIndex][vorstellungIndex].getEintrittspreis() *
+                Planer.Andrang(spielplan[tagIndex][saalIndex][vorstellungIndex], tagIndex, vorstellungIndex);
+        return 0;
+    }
+
+    private int spielplanAusgaben(){
+        return 0;
+    }
+
+    //??
+    public int SpielplanGewinn(){
+        return 0;
+    }
+
+
+
+
+
 
 //    private int einnahmenberechnung(Vorstellung vorstellung)
 //    {
@@ -65,12 +97,12 @@ public class Spielplan{
     }
 
     //Getter
-    public static Vorstellung[][][] getSpielplan() {return spielplan;}
-    public static void setSpielplan(Vorstellung[][][] spielplan) {
+    public Vorstellung[][][] getSpielplan() {return spielplan;}
+    public void setSpielplan(Vorstellung[][][] spielplan) {
         Spielplan.spielplan = spielplan;
     }
 
-    public static String toString(Vorstellung[][][] spielplan) {
+    public String toString(Vorstellung[][][] spielplan) {
         return Arrays.deepToString(spielplan);
     }
 }

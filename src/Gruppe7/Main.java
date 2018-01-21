@@ -18,7 +18,9 @@ public class Main {
         new WerbefilmImporter("C:/import/werbespots.csv");
         new KinofilmImporter("C:/import/filme.csv");
 
-        Spielplan.CreateRandomSpielplan();
+        //Spielplaninitialisierung
+        Spielplan randomSpielplan = new Spielplan();
+        randomSpielplan.getSpielplan();
         //System.out.println(Spielplan.toString(Spielplan.getSpielplan()));
 
     }

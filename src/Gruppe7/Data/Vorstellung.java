@@ -103,6 +103,9 @@ public class Vorstellung {
     public Werbefilm[] getWerbefilme(){
         return werbungen;
     } // TODO: Festlegung der Anzahl der Webefilmelemente wo?
+    public int getEintrittspreis() {
+        return eintrittspreis;
+    } // TODO immernoch hardcoded
 
     @Override
     public String toString() {
