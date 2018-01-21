@@ -6,26 +6,18 @@ import Gruppe7.Data.*;
 
 public class Planer
 {
-    // Arraylisten die je einen Spielplan enthalten. Dreidimensionale Arrays.
-    private Vorstellung[][][] randomSpielplan;
-    private Vorstellung[][][] improvedSpielplan;
+//    // Arraylisten die je einen Spielplan enthalten. Dreidimensionale Arrays.
+//    private Vorstellung[][][] randomSpielplan;
+//    private Vorstellung[][][] improvedSpielplan;
 
     public Planer()
     {
-    //    randomSpielplan = Spielplan.GetRandomSpielplan();
+        Spielplan.setSpielplan(Spielplan.CreateRandomSpielplan());
     }
 
     public void Improve()
     {
-        int randomVorstellungIndex = ThreadLocalRandom.current().nextInt(0, randomSpielplan.length);
+     //   int randomVorstellungIndex = ThreadLocalRandom.current().nextInt(0, Spielplan);
     }
 
-    // Getter
-    public Vorstellung[][][] getImprovedSpielplan() { return improvedSpielplan; }
-    public Vorstellung[][][] getRandomSpielplan() {return randomSpielplan; }
-
-    @Override
-    public String toString() {
-       return Arrays.deepToString(randomSpielplan);
-       }
 }
