@@ -47,7 +47,8 @@ public class Kinofilm extends Film
         System.out.println("Klasse Kinofilm Beliebtheit: " + beliebtheit);
         System.out.println("Klasse Kinofilm Laufzeit: " + getLaufzeit());
         System.out.println("Klasse Kinofilm Sprache: " + sprache);
-        System.out.println("Klasse Kinofilm Erscheinungsjahr: " + erscheinungsland);
+        System.out.println("Klasse Kinofilm Erscheinungsland: " + erscheinungsland);
+        System.out.println("Klasse Kinofilm Erscheinungsjahr: " + erscheinungsjahr);
         System.out.println("Klasse Kinofilm 3D-Film: " +threeD );
         System.out.println("-------------------------------------------------------");
 
