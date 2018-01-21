@@ -8,18 +8,18 @@ public class Spielplan{
     static final int gesamtZahlVorstellungen = 21 * 4 * SaalVerwaltung.getSize();
 
     //Spielplan ist ein Array der Länge 21(Tage) * 4(Spielzeiten) * Anzahl der Säle
-    private static Vorstellung[][][] spielplan = new Vorstellung[21][4][SaalVerwaltung.getSize()];
+    private static Vorstellung[][][] spielplan = new Vorstellung[21][SaalVerwaltung.getSize()][4];
 
     public static Vorstellung[][][] GetRandomSpielplan() //TODO: hashcode speicher, um sicherzustellen, dass selber spielplan nicht zweimal auftaucht?
     {
         // Für 21 Tage // TODO: Eigentlich unnötig, jedoch besser lesbar stattdessen: for schleife von 0 bis gesamtzahl Vorst.
-        for (int tag = 0; tag < 21; tag++)
+        for (int tag = 0; tag < 20; tag++)
         {
             // Für jeden Saal
-            for (int saal = SaalVerwaltung.getSize(); saal > 0; tag--)
+            for (int saal = 0; saal < SaalVerwaltung.getSize()-1; saal++)
             {
                 // Für jeden Timeslot
-                for (int vorstellung = 4; vorstellung > 0; tag++)
+                for (int vorstellung = 0; vorstellung < 4; vorstellung++)
                 {
                     spielplan[tag][saal][vorstellung] = new Vorstellung(); //TODO: Bei constructor call vorstelung und Spielzeit übergeben
                 }
@@ -50,4 +50,7 @@ public class Spielplan{
         }
         return false;
     }
+
+    //Getter
+    public Vorstellung[][][] getSpielplan() {return spielplan;}
 }

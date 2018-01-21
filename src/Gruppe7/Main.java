@@ -1,8 +1,11 @@
 package Gruppe7;
 
 import java.io.IOException;
-import Gruppe7.Importer.*;
+import java.util.ArrayList;
+
+import Gruppe7.Data.*;
 import Gruppe7.Logic.*;
+import Gruppe7.Importer.*;
 
 public class Main {
 
@@ -16,6 +19,6 @@ public class Main {
     Planer planer = new Planer();
     //planer.Improve();
 
-        System.out.println(planer.getRandomSpielplan().toString());
+        System.out.println(planer.getRandomSpielplan());
     }
 }
