@@ -1,0 +1,24 @@
+/**
+ * Beschreiben Sie hier die Aufzaehlungsklasse Fsk.
+ * 
+ * @author  (Alexander Kaelber)
+ * @version (03.01.18)
+ */
+public enum FSK {
+    Null(0), 
+
+    Sechs(6), 
+
+    Zwoelf(12), 
+
+    Sechszehn(16), 
+
+    Achtzehn(18);
+
+    public int fsk;
+
+    private FSK (int fsk) 
+    { this.fsk=fsk; }
+
+    public int getfsk() { return fsk; }
+}
