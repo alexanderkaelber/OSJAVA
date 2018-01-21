@@ -7,7 +7,7 @@ public class Vorstellung {
 
     //Attribute
     private Kinofilm vorstellungsFilm;
-    private Werbefilm[] werbungen; // TODO: Anzhal der Werbefilme über ihre Länge geregelt
+    private Werbefilm[] werbungen = new Werbefilm[1]; // TODO: Anzhal der Werbefilme über ihre Länge geregelt
     private Saal vorstellungsSaal;
     private Spielzeiten vorstellungsTimeslot;
     private int eintrittspreis = 7; // TODO: Hardcoded
@@ -34,8 +34,7 @@ public class Vorstellung {
             int vorstellungsTimeslotIndex = ThreadLocalRandom.current().nextInt(0, 3);
 
             vorstellungsFilm = FilmVerwaltung.getFilme().get(kinofilmIndex);
-            werbungen[0] = WerbefilmVerwaltung.getWerbefilme().get(werbefilmIndex);
-            //werbungen[1] = WerbefilmVerwaltung.getWerbefilme().get(1); // TODO: Anzhal der Werbefilme über ihre Länge geregelt
+            werbungen[0]= WerbefilmVerwaltung.getWerbefilme().get(werbefilmIndex);
             vorstellungsSaal = SaalVerwaltung.getSaele().get(saalIndex);
             vorstellungsTimeslot = Spielzeiten.values()[vorstellungsTimeslotIndex];
 
@@ -114,4 +113,8 @@ public class Vorstellung {
         return werbungen;
     } // TODO: Festlegung der Anzahl der Webefilmelemente wo?
 
+    @Override
+    public String toString() {
+        return null;
+    }
 }
