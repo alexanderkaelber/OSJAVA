@@ -21,6 +21,8 @@ public class Main {
         //Spielplaninitialisierung
         Spielplan randomSpielplan = new Spielplan();
         randomSpielplan.getSpielplan();
+        System.out.println(randomSpielplan.getSpielplaneinnahmen());
+        System.out.println(randomSpielplan.getSpielplanAusgaben());
         //System.out.println(Spielplan.toString(Spielplan.getSpielplan()));
 
     }
