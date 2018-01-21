@@ -1,6 +1,8 @@
 package Gruppe7.Data;
 
-public class Saal {
+
+
+public class Saal{
     //Attribute
     private int plaetzeLoge;
     private int plaetzeParkett;
@@ -41,4 +43,6 @@ public class Saal {
     public int getSaalNummer() {
         return saalNummer;
     }
+
+
 }

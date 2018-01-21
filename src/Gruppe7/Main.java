@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import Gruppe7.Data.*;
-import Gruppe7.Exporter.Exporter;
+import Gruppe7.Exporter.*;
 import Gruppe7.Logic.*;
 import Gruppe7.Importer.*;
 
@@ -23,8 +23,11 @@ public class Main {
 
         //System.out.println(Spielplan.toString(Spielplan.getSpielplan()));
 
-        Exporter planerExport;
-        planerExport = new Exporter(Spielplan.getSpielplan());
+        //Exporter planerExport;
+        //planerExport = new Exporter(Spielplan.getSpielplan());
+
+        Sortierer sortiererVorstellungen;
+        sortiererVorstellungen = new Sortierer(Spielplan.getSpielplan());
 
     }
 }

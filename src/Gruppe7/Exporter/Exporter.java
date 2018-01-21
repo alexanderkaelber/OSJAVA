@@ -1,29 +1,67 @@
+/*
 package Gruppe7.Exporter;
 
-import Gruppe7.Data.Spielplan;
-import Gruppe7.Data.Vorstellung;
+import Gruppe7.Data.*;
 
-public class Exporter
+import java.util.Arrays;
+import java.util.Collections;
+
+import static java.lang.System.out;
+import static java.util.Collections.*;
+
+public class Exporter implements Comparable<Vorstellung[][][]>
 {
 
     private Vorstellung[][][] exportSpielplan;
     private int vorstellungsTagNr;
+    private int vorstellungsSaalNr;
+    private int vorstellungsSpielzeitNr;
+
 
 
     public Exporter(Vorstellung[][][] in_exportSpielplan)
     {
+
+        Saal[] arrayVorstellungsSaele;
+        arrayVorstellungsSaele = new Saal[SaalVerwaltung.getSaele().size()];
+        out.println(arrayVorstellungsSaele.length);
+
+        int iArraySaele = 0;
+
         exportSpielplan=in_exportSpielplan;
-                                //[TAG][SAAL][TIMESLOT]
-//        System.out.println(exportSpielplan[0][0][0]);
 
-        // for (int i = 0; i < arrayGenre.length; i++) {
-        System.out.println(exportSpielplan.length);
-        for (int i=0; i<= 20; i++){
+        //Collections.sort(exportSpielplan);
 
-            System.out.println(i);
+        for (int iTag=0; iTag<= 0; iTag++){
+            vorstellungsTagNr=iTag+1;
 
-            System.out.println(exportSpielplan[i][0][0]);
+            for (int iSaal=0;iSaal<= SaalVerwaltung.getSaele().size()-1;iSaal++){
+                vorstellungsSaalNr=iSaal+1;
+                for (int iSpielzeit = 0; iSpielzeit<= 3; iSpielzeit++){
+                    vorstellungsSpielzeitNr=iSpielzeit+1;
+
+
+
+
+
+
+                        iArraySaele = exportSpielplan[iTag][iSaal][iSpielzeit].getSaal().getSaalNummer();
+
+                        arrayVorstellungsSaele[iArraySaele]=exportSpielplan[iTag][iSaal][iSpielzeit].getSaal();
+                        Arrays.sort(arrayVorstellungsSaele);
+                        out.println(arrayVorstellungsSaele[iArraySaele].getSaalNummer());
+                        out.println(arrayVorstellungsSaele.length);
+
+
+
+
+                }
+            }
+
         }
+
+        out.println(Arrays.toString(arrayVorstellungsSaele));
+
 
         //vorstellungsTagNr=exportSpielplan[][][];
 
@@ -33,6 +71,9 @@ public class Exporter
 
         //Spielplan.getSpielplan()[0][0][0];
     }
+
+
+
 
     public void ExportKinoProgramm()
     {
@@ -48,4 +89,10 @@ public class Exporter
     {
         //Code
     }
+
+    @Override
+    public int compareTo(Vorstellung[][][]exportSpielplan) {
+        return vorstellungsSaalNr;
+    }
 }
+*/
