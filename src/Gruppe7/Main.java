@@ -7,6 +7,7 @@ import java.util.Arrays;
 import Gruppe7.Data.*;
 import Gruppe7.Logic.*;
 import Gruppe7.Importer.*;
+import sun.security.provider.ConfigFile;
 
 public class Main {
 
@@ -17,9 +18,8 @@ public class Main {
         new WerbefilmImporter("C:/import/werbespots.csv");
         new KinofilmImporter("C:/import/filme.csv");
 
-        Planer planer = new Planer();
-        //planer.Improve();
+        Spielplan.CreateRandomSpielplan();
+        //System.out.println(Spielplan.toString(Spielplan.getSpielplan()));
 
-        System.out.println(Spielplan.toString(Spielplan.getSpielplan()));
     }
 }

@@ -91,7 +91,7 @@ public class Vorstellung {
     }
 
     //Getter
-    Kinofilm getKinofilm(){
+    public Kinofilm getKinofilm(){
         return vorstellungsFilm;
     }
     public Saal getSaal(){
