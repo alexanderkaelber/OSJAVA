@@ -12,7 +12,7 @@ public class Spielplan{
 
     public static Vorstellung[][][] GetRandomSpielplan() //TODO: hashcode speicher, um sicherzustellen, dass selber spielplan nicht zweimal auftaucht?
     {
-        // Für 21 Tage // TODO: Eigentlich unnötig, jedoch besser lesbar stattdessen: for schleife von 0 bis gesamtzahl Vorst.
+        // Für 21 Tage
         for (int tag = 0; tag < 20; tag++)
         {
             // Für jeden Saal
@@ -28,6 +28,7 @@ public class Spielplan{
         return spielplan;
     }
 
+    // TODO: Genrecheck in die Spielplanerstellung einbinden.
     private boolean checkGenre()
     {
         //Temporäre Genre-Liste

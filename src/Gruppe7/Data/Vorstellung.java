@@ -113,4 +113,8 @@ public class Vorstellung {
         return werbungen;
     } // TODO: Festlegung der Anzahl der Webefilmelemente wo?
 
+    @Override
+    public String toString() {
+        return null;
+    }
 }

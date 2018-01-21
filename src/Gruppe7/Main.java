@@ -2,6 +2,7 @@ package Gruppe7;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import Gruppe7.Data.*;
 import Gruppe7.Logic.*;
