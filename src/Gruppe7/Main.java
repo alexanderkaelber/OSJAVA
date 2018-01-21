@@ -13,10 +13,12 @@ public class Main {
     //new WerbefilmImporter("C:/import/werbespots.csv");
     //new KinofilmImporter("C:/import/filme.csv");
 
-     new FilterBeliebtheit(50);
 
 
-    //Planer planer = new Planer();
+        new KinofilmImporter("C:/import/filme.csv", 0);
+
+
+        //Planer planer = new Planer();
     //planer.Improve();
 
       //  System.out.println(planer.getRandomSpielplan().toString());

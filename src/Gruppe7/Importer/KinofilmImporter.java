@@ -1,7 +1,9 @@
 package Gruppe7.Importer;
 
 import Gruppe7.Data.*;
+
 import java.util.ArrayList;
+
 
 public class KinofilmImporter extends Datei {
 
@@ -33,7 +35,7 @@ public class KinofilmImporter extends Datei {
      *
      * @param in_name (String): Dateiname der benutzt werden soll.
      */
-    public KinofilmImporter(String in_name) {
+    public KinofilmImporter(String in_name, int minBeliebtheit) {
         super(in_name);
 
         importFileKinofilme = new Datei(in_name);
@@ -45,7 +47,9 @@ public class KinofilmImporter extends Datei {
             //Jede Zeile wird in importString eingelesen, es sei denn, in der letzten Zeile steht nichts drin.
             importString = importFileKinofilme.readLine_FS();
 
-            if (importString == null) {break;}
+            if (importString == null) {
+                break;
+            }
 
             String[] arrayKinofilm = new String[0];
             if (importString != null) {
@@ -103,8 +107,7 @@ public class KinofilmImporter extends Datei {
                 }
 
                 //Die ausgelesenen Genres werden gepfrüft und eindeutigen Enums zugewiesen.
-                for (String inputGenre: arrayGenre)
-                {
+                for (String inputGenre : arrayGenre) {
                     if (inputGenre.trim().equals("Action")) {
                         importKinofilmGenres.add(Genre.ACTION);
                     }
@@ -136,33 +139,34 @@ public class KinofilmImporter extends Datei {
 
             }
             importKinofilmMietpreis = Integer.valueOf(arrayKinofilm[4]);
-                System.out.println("Mietpreis" + importKinofilmMietpreis);
+            System.out.println("Mietpreis" + importKinofilmMietpreis);
             importKinofilmBeliebtheit = Integer.valueOf(arrayKinofilm[5]);
             importKinofilmLaufzeit = Integer.valueOf(arrayKinofilm[6]);
             importKinofilmSprache = String.valueOf(arrayKinofilm[7]);
-            importKinofilmErscheinungsland=String.valueOf(arrayKinofilm[8]);
-            importKinofilmErscheinungsjahr=Integer.valueOf(arrayKinofilm[9]);
-            importThreeD=Boolean.valueOf(arrayKinofilm[10]);
+            importKinofilmErscheinungsland = String.valueOf(arrayKinofilm[8]);
+            importKinofilmErscheinungsjahr = Integer.valueOf(arrayKinofilm[9]);
+            importThreeD = Boolean.valueOf(arrayKinofilm[10]);
 
 
             //Constructor
 
-            //SaalVerwaltung.setSaele(new Saal(importPlaetzeLoge, importPlaetzeParkett, importThreeD, importSaalNr));
 
-            FilmVerwaltung.setFilme(new Kinofilm (importKinofilmTitel, importKinofilmLaufzeit, importThreeD, importKinofilmSprache, importKinofilmRegisseur, importKinofilmErscheinungsjahr, importKinofilmErscheinungsland, importKinofilmBeliebtheit, importKinofilmMietpreis, importKinofilmFSK, importKinofilmGenres));
+            //minBeliebtheit = 0;
+            if (importKinofilmBeliebtheit >= minBeliebtheit) {
+                FilmVerwaltung.setFilme(new Kinofilm(importKinofilmTitel, importKinofilmLaufzeit, importThreeD, importKinofilmSprache, importKinofilmRegisseur, importKinofilmErscheinungsjahr, importKinofilmErscheinungsland, importKinofilmBeliebtheit, importKinofilmMietpreis, importKinofilmFSK, importKinofilmGenres));
+            }
         }
     }
+
+    public void setMinBeliebtheit(int minBeliebtheit) {
+        this.minBeliebtheit = minBeliebtheit;
+    }
+
+    public int getMinBeliebtheit() {
+        return minBeliebtheit;
+    }
 }
-                //ArrayList<Genre> TODO weiteres Array auslesen.
-                // importKinofilmGemrsString
 
-                //
-
-
-                //importKinofilmLaufzeit = Integer.valueOf(arrayKinofilm[6]);
-
-
-                // WerbefilmVerwaltung.setWerbefilme(new Werbefilm(importKinofilmTitel, importKinofilmLaufzeit, importKinofilmRegisseur));
 
 
 
