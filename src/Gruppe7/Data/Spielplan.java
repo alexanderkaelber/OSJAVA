@@ -10,7 +10,7 @@ public class Spielplan{
     //Spielplan ist ein Array der Länge 21(Tage) * 4(Spielzeiten) * Anzahl der Säle
     private static Vorstellung[][][] spielplan = new Vorstellung[21][SaalVerwaltung.getSize()][4];
 
-    public static Vorstellung[][][] GetRandomSpielplan() //TODO: hashcode speicher, um sicherzustellen, dass selber spielplan nicht zweimal auftaucht?
+    public static Vorstellung[][][] CreateRandomSpielplan() //TODO: hashcode speicher, um sicherzustellen, dass selber spielplan nicht zweimal auftaucht?
     {
         // Für 21 Tage
         for (int tag = 0; tag < 20; tag++)
@@ -29,15 +29,15 @@ public class Spielplan{
     }
 
     // TODO: Genrecheck in die Spielplanerstellung einbinden.
-    private boolean checkGenre()
+    private static boolean checkGenre()
     {
         //Temporäre Genre-Liste
         List<Genre> enumerationList = Arrays.asList(Genre.values());
 
         // Prüfung, ob jedes Genre im Spielplan mindestens einmal vertreten ist.
-        for (int tag = 0; tag < 21; tag++) {
-            for (int saal = SaalVerwaltung.getSize(); saal > 0; tag--) {
-                for (int vorstellung = 4; vorstellung > 0; tag++) {
+        for (int tag = 0; tag < 20; tag++){
+            for (int saal = 0; saal < SaalVerwaltung.getSize()-1; saal++) {
+                for (int vorstellung = 0; vorstellung < 4; vorstellung++) {
                     if (enumerationList.contains(spielplan[tag][saal][vorstellung].getKinofilm().getGenre())) {
                         enumerationList.remove(spielplan[tag][saal][vorstellung].getKinofilm().getGenre());
                     }
@@ -53,5 +53,12 @@ public class Spielplan{
     }
 
     //Getter
-    public Vorstellung[][][] getSpielplan() {return spielplan;}
+    public static Vorstellung[][][] getSpielplan() {return spielplan;}
+    public static void setSpielplan(Vorstellung[][][] spielplan) {
+        Spielplan.spielplan = spielplan;
+    }
+
+    public static String toString(Vorstellung[][][] spielplan) {
+        return Arrays.deepToString(spielplan);
+    }
 }
